@@ -336,7 +336,7 @@ footer { background: var(--blue-dark); text-align: center; padding: 60px 24px; b
     <li><a href="#facts">Facts</a></li>
     <li><a href="#buzz">Buzz</a></li>
     <li><a href="#news">News</a></li>
-    <li><a href="https://www.mlb.com/mets/tickets" target="_blank" class="nav-ticket">Tickets</a></li>
+    <li><a href="https://www.mlb.com/mets/tickets"  class="nav-ticket">Tickets</a></li>
   </ul>
 </nav>
 
@@ -556,36 +556,91 @@ footer { background: var(--blue-dark); text-align: center; padding: 60px 24px; b
 </div>
 </div>
 
-<!-- TWITTER FEED -->
+<!-- NEWS WIDGET -->
 <div class="dark-section">
 <div class="section-wrap" id="news">
   <div class="section-header reveal">
-    <div><div class="section-tag">Live Updates</div><h2 class="section-title section-title-white">Mets Feed</h2></div>
-    <div style="font-size:0.78rem;color:rgba(255,255,255,0.35);letter-spacing:1px;">Direct from @Mets — updates automatically</div>
+    <div><div class="section-tag">Live Updates</div><h2 class="section-title section-title-white">Mets News</h2></div>
   </div>
-  <div style="display:flex;justify-content:center;">
-    <a class="twitter-timeline"
-       data-theme="dark"
-       data-chrome="nofooter noborders transparent"
-       data-tweet-limit="6"
-       data-width="700"
-       data-height="800"
-       href="https://twitter.com/Mets">
-      Tweets by @Mets
-    </a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <div class="news-widget reveal">
+    <div class="nw-header">
+      <span class="nw-logo">🐦</span>
+      <span class="nw-title">@Mets on X</span>
+      <a href="https://twitter.com/Mets"  class="nw-follow">Follow</a>
+    </div>
+    <div class="nw-links">
+      <a href="https://twitter.com/Mets"  class="nw-item"><span class="nw-dot"></span>Latest Mets tweets &amp; updates →</a>
+      <a href="https://www.mlb.com/mets/news"  class="nw-item"><span class="nw-dot"></span>MLB.com Mets News →</a>
+      <a href="https://nypost.com/tag/new-york-mets/"  class="nw-item"><span class="nw-dot"></span>NY Post — Mets Coverage →</a>
+      <a href="https://www.nytimes.com/athletic/team/new-york-mets/"  class="nw-item"><span class="nw-dot"></span>The Athletic — Mets →</a>
+      <a href="https://www.espn.com/mlb/team/_/name/nym/new-york-mets"  class="nw-item"><span class="nw-dot"></span>ESPN Mets Hub →</a>
+    </div>
+    <div class="nw-footer">Click any link to read the latest — opens in a new tab</div>
   </div>
 </div>
 </div>
+
+<style>
+.news-widget {
+  max-width: 500px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.nw-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nw-logo { font-size: 1.1rem; }
+.nw-title {
+  flex: 1;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800; font-size: 1rem; text-transform: uppercase;
+  letter-spacing: 1px; color: white;
+}
+.nw-follow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: white;
+  background: var(--orange); padding: 6px 14px; border-radius: 20px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nw-follow:hover { background: #ff7a3d; }
+.nw-links { padding: 8px 0; }
+.nw-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 20px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.88rem; font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s;
+}
+.nw-item:last-child { border-bottom: none; }
+.nw-item:hover { background: rgba(255,255,255,0.06); color: white; padding-left: 26px; }
+.nw-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0;
+}
+.nw-footer {
+  padding: 12px 20px;
+  font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); font-weight: 600;
+  background: rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+</style>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo"><span class="accent">Let's Go </span><span class="outline">Mets</span></div>
   <div class="footer-links">
-    <a href="https://www.mlb.com/mets" target="_blank">Official Site</a>
-    <a href="https://www.mlb.com/mets/tickets" target="_blank">Tickets</a>
-    <a href="https://www.mlb.com/mets/stats" target="_blank">Stats</a>
-    <a href="https://twitter.com/mets" target="_blank">Twitter / X</a>
+    <a href="https://www.mlb.com/mets" >Official Site</a>
+    <a href="https://www.mlb.com/mets/tickets" >Tickets</a>
+    <a href="https://www.mlb.com/mets/stats" >Stats</a>
+    <a href="https://twitter.com/mets" >Twitter / X</a>
   </div>
   <div class="footer-sub">Blue & Orange Forever · Citi Field, Queens NY · Est. 1962</div>
 </footer>

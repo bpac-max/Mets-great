@@ -482,13 +482,134 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
 @media(max-width:600px){
   nav{padding:0 12px;}
   .nav-links{gap:2px;}
-  .nav-links button{font-size:.6rem;padding:6px 8px;letter-spacing:1px;}
+  .nav-links button{font-size:.57rem;padding:5px 6px;letter-spacing:.5px;white-space:nowrap;}
   .section-wrap{padding:50px 16px;}
   .sched-row{grid-template-columns:70px 1fr auto;padding:10px 14px;}
   .fz-tab{padding:12px 18px;font-size:.72rem;}
   .modal-num-block{width:90px;}
   .modal-num-big{font-size:3.8rem;letter-spacing:-2px;}
   .tt-sub-row{grid-template-columns:1fr;}
+}
+
+/* ── STATS PAGE ── */
+.stats-hero{background:var(--blue);padding:56px 24px 0;position:relative;overflow:hidden;}
+.stats-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 10% 50%,rgba(0,80,200,.4),transparent 60%),radial-gradient(ellipse 50% 50% at 90% 50%,rgba(255,89,16,.15),transparent 60%);pointer-events:none;}
+.stats-hero-inner{max-width:1100px;margin:0 auto;position:relative;}
+
+/* Score Widget */
+.score-widget-bar{background:var(--orange);padding:0;}
+.score-widget-inner{max-width:1100px;margin:0 auto;display:flex;align-items:stretch;gap:0;min-height:80px;}
+.sw-game{flex:1;display:flex;align-items:center;gap:0;padding:0 24px;border-right:1px solid rgba(255,255,255,.15);cursor:pointer;transition:background .2s;}
+.sw-game:last-child{border-right:none;}
+.sw-game:hover{background:rgba(0,0,0,.08);}
+.sw-game-inner{width:100%;display:flex;align-items:center;gap:12px;}
+.sw-status{font-size:.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);min-width:56px;}
+.sw-status.live{color:#fff;animation:pulse 1.5s ease infinite;}
+.sw-teams{flex:1;}
+.sw-team-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:2px 0;}
+.sw-team-name{font-family:"Barlow Condensed",sans-serif;font-size:.95rem;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.5px;}
+.sw-team-name.winner{color:#fff;}
+.sw-team-score{font-family:"Barlow Condensed",sans-serif;font-size:1.3rem;font-weight:900;color:#fff;min-width:20px;text-align:right;}
+.sw-inning{font-size:.65rem;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:1px;white-space:nowrap;}
+.sw-no-game{flex:1;display:flex;align-items:center;justify-content:center;padding:20px 24px;}
+.sw-no-game-text{font-size:.8rem;color:rgba(255,255,255,.6);letter-spacing:1px;font-weight:600;}
+.sw-loading{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px 24px;width:100%;}
+.sw-spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite;}
+.sw-loading-text{font-size:.78rem;color:rgba(255,255,255,.6);letter-spacing:1px;}
+
+/* Stats tabs */
+.stats-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.09);overflow-x:auto;}
+.stats-tab{padding:14px 28px;font-family:"Barlow Condensed",sans-serif;font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);background:transparent;border:none;cursor:pointer;position:relative;transition:color .2s;white-space:nowrap;}
+.stats-tab::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transition:transform .2s;}
+.stats-tab.active{color:#fff;}
+.stats-tab.active::after{transform:scaleX(1);}
+.stats-tab:hover{color:rgba(255,255,255,.8);}
+.stats-body{background:var(--blue-dark);}
+.stats-panel{display:none;max-width:1100px;margin:0 auto;padding:40px 24px 80px;}
+.stats-panel.active{display:block;}
+
+/* Stat tables */
+.stat-table-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;margin-bottom:24px;}
+.stat-table-head{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08);}
+.stat-table-title{font-family:"Barlow Condensed",sans-serif;font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#fff;}
+.stat-table-sub{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:600;}
+.stat-table{width:100%;border-collapse:collapse;}
+.stat-table th{padding:10px 16px;text-align:left;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.06);}
+.stat-table th.num{text-align:right;}
+.stat-table td{padding:12px 16px;font-size:.88rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s;}
+.stat-table tr:last-child td{border-bottom:none;}
+.stat-table tr:hover td{background:rgba(255,255,255,.04);}
+.stat-table td.num{text-align:right;font-family:"Barlow Condensed",sans-serif;font-size:1rem;font-weight:700;color:#fff;}
+.stat-table td.player-cell{display:flex;align-items:center;gap:10px;}
+.stat-table td.highlight{color:var(--orange);font-weight:800;}
+.stat-table .stat-thumb{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;background:rgba(255,255,255,.1);}
+.stat-loading{padding:32px;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3);letter-spacing:1px;}
+.stat-error{padding:24px;text-align:center;font-size:.82rem;color:rgba(255,89,16,.6);letter-spacing:1px;}
+
+/* Standings */
+.standings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.standings-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;}
+.standings-div-head{padding:14px 20px;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.08);font-family:"Barlow Condensed",sans-serif;font-size:.85rem;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#fff;}
+.standings-row{display:grid;grid-template-columns:24px 1fr 36px 36px 52px 52px;gap:8px;align-items:center;padding:10px 20px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;}
+.standings-row:last-child{border-bottom:none;}
+.standings-row:hover{background:rgba(255,255,255,.03);}
+.standings-row.mets-row{background:rgba(255,89,16,.07);border-left:3px solid var(--orange);}
+.standings-pos{font-family:"Barlow Condensed",sans-serif;font-weight:900;color:rgba(255,255,255,.35);font-size:.85rem;}
+.standings-team{font-weight:600;color:rgba(255,255,255,.85);}
+.standings-team.mets{color:var(--orange);font-weight:700;}
+.standings-num{text-align:right;font-family:"Barlow Condensed",sans-serif;font-weight:700;color:rgba(255,255,255,.7);}
+.standings-gb{text-align:right;font-size:.78rem;color:rgba(255,255,255,.4);}
+.standings-pct{text-align:right;font-family:"Barlow Condensed",sans-serif;font-weight:800;color:#fff;}
+
+/* News */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.news-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;display:block;}
+.news-card:hover{transform:translateY(-3px);border-color:rgba(255,89,16,.4);background:rgba(255,255,255,.07);}
+.news-img{width:100%;height:160px;object-fit:cover;background:linear-gradient(135deg,var(--blue),var(--blue-dark));}
+.news-img-placeholder{width:100%;height:160px;background:linear-gradient(135deg,rgba(0,45,114,.8),rgba(0,20,60,.9));display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.news-body{padding:18px;}
+.news-source{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:8px;}
+.news-title{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:800;color:#fff;line-height:1.3;margin-bottom:8px;}
+.news-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;}
+.news-date{font-size:.65rem;color:rgba(255,255,255,.25);margin-top:10px;letter-spacing:1px;}
+
+/* Recent games */
+.recent-games-list{display:flex;flex-direction:column;gap:8px;}
+.rg-row{display:flex;align-items:center;gap:16px;padding:14px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;transition:background .2s;}
+.rg-row:hover{background:rgba(255,255,255,.07);}
+.rg-date{font-size:.7rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:1px;min-width:60px;}
+.rg-result{font-family:"Barlow Condensed",sans-serif;font-size:1rem;font-weight:900;min-width:28px;}
+.rg-result.W{color:#22c55e;}
+.rg-result.L{color:#ef4444;}
+.rg-result.T{color:rgba(255,255,255,.4);}
+.rg-opp{flex:1;font-size:.88rem;color:rgba(255,255,255,.75);font-weight:500;}
+.rg-score{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:800;color:#fff;}
+.rg-home{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.25);padding:3px 8px;border:1px solid rgba(255,255,255,.1);border-radius:4px;}
+
+/* Game detail modal */
+.game-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,5,20,.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;}
+.game-modal.open{display:flex;}
+.game-modal-box{background:var(--blue);border-radius:20px;max-width:500px;width:100%;padding:32px;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.5);}
+.gm-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.gm-status{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:16px;}
+.gm-score{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;}
+.gm-team{text-align:center;flex:1;}
+.gm-team-name{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:6px;}
+.gm-team-score{font-family:"Barlow Condensed",sans-serif;font-size:5rem;font-weight:900;color:#fff;line-height:1;}
+.gm-team-score.winner{color:var(--orange);}
+.gm-vs{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:rgba(255,255,255,.2);}
+.gm-details{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.gm-detail{background:rgba(255,255,255,.06);border-radius:10px;padding:14px;text-align:center;}
+.gm-detail-val{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:#fff;}
+.gm-detail-lbl{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px;font-weight:600;}
+
+@media(max-width:900px){
+  .standings-grid{grid-template-columns:1fr;}
+  .news-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .news-grid{grid-template-columns:1fr;}
+  .standings-row{grid-template-columns:20px 1fr 32px 32px 44px 44px;gap:4px;font-size:.75rem;}
 }
 </style>
 </head>
@@ -500,6 +621,7 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
     <li><button onclick="showPage('schedule')" id="nav-schedule">Schedule</button></li>
     <li><button onclick="showPage('history')" id="nav-history">History</button></li>
     <li><button onclick="showPage('fanzone')" id="nav-fanzone">Fan Zone</button></li>
+    <li><button onclick="showPage('stats')" id="nav-stats">Stats</button></li>
     <li><button onclick="window.location='https://www.mlb.com/mets/tickets'" class="nav-ticket">Tickets</button></li>
   </ul>
 </nav>
@@ -737,6 +859,115 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
   </div></div>
   <footer><div class="footer-logo"><span class="accent">Let&rsquo;s Go </span><span class="outline">Mets</span></div><div class="footer-links"><a href="https://www.mlb.com/mets">Official Site</a><a href="https://www.mlb.com/mets/tickets">Tickets</a><a href="https://www.mlb.com/mets/stats">Stats</a><a href="https://twitter.com/mets">Twitter / X</a></div><div class="footer-sub">Blue &amp; Orange Forever &middot; Citi Field, Queens NY &middot; Est. 1962</div></footer>
 </div>
+
+<!-- ════ STATS ════ -->
+<div class="page" id="page-stats">
+
+  <!-- Score Widget Bar -->
+  <div class="score-widget-bar">
+    <div class="score-widget-inner" id="score-widget-bar">
+      <div class="sw-loading"><div class="sw-spinner"></div><span class="sw-loading-text">Loading scores...</span></div>
+    </div>
+  </div>
+
+  <!-- Stats Hero + Tabs -->
+  <div class="stats-hero">
+    <div class="stats-hero-inner">
+      <div class="fz-hero-tag" style="margin-bottom:10px">2025 Season Stats</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:.9;color:#fff;margin-bottom:24px;">
+        METS<br><span style="color:var(--orange)">BY THE</span><br>NUMBERS
+      </div>
+      <div class="stats-tabs">
+        <button class="stats-tab active" onclick="showStatsTab('hitting',this)">&#127941; Hitting</button>
+        <button class="stats-tab" onclick="showStatsTab('pitching',this)">&#9971; Pitching</button>
+        <button class="stats-tab" onclick="showStatsTab('standings',this)">&#127942; Standings</button>
+        <button class="stats-tab" onclick="showStatsTab('recent',this)">&#128197; Recent Games</button>
+        <button class="stats-tab" onclick="showStatsTab('news',this)">&#128240; News</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-body">
+
+    <!-- HITTING -->
+    <div class="stats-panel active" id="stp-hitting">
+      <div class="stat-table-wrap">
+        <div class="stat-table-head">
+          <div class="stat-table-title">Batting Stats</div>
+          <div class="stat-table-sub" id="hitting-season-label">2025 Regular Season</div>
+        </div>
+        <div id="hitting-table-body"><div class="stat-loading">&#9883; Loading stats from MLB...</div></div>
+      </div>
+    </div>
+
+    <!-- PITCHING -->
+    <div class="stats-panel" id="stp-pitching">
+      <div class="stat-table-wrap">
+        <div class="stat-table-head">
+          <div class="stat-table-title">Pitching Stats</div>
+          <div class="stat-table-sub" id="pitching-season-label">2025 Regular Season</div>
+        </div>
+        <div id="pitching-table-body"><div class="stat-loading">&#9883; Loading stats from MLB...</div></div>
+      </div>
+    </div>
+
+    <!-- STANDINGS -->
+    <div class="stats-panel" id="stp-standings">
+      <div style="margin-bottom:24px">
+        <div class="section-tag" style="margin-bottom:12px">NL East</div>
+        <div id="nle-standings"><div class="stat-loading">&#9883; Loading standings...</div></div>
+      </div>
+      <div>
+        <div class="section-tag" style="margin-bottom:12px">Full NL Standings</div>
+        <div class="standings-grid" id="nl-standings-grid"><div class="stat-loading">&#9883; Loading...</div></div>
+      </div>
+    </div>
+
+    <!-- RECENT GAMES -->
+    <div class="stats-panel" id="stp-recent">
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start">
+        <div>
+          <div class="section-tag" style="margin-bottom:14px">Last 15 Games</div>
+          <div id="recent-games-list"><div class="stat-loading">&#9883; Loading recent games...</div></div>
+        </div>
+        <div>
+          <div class="section-tag" style="margin-bottom:14px">Season at a Glance</div>
+          <div id="season-summary-card"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div class="stats-panel" id="stp-news">
+      <div class="section-tag" style="margin-bottom:20px">Latest Mets News</div>
+      <div class="news-grid" id="news-grid">
+        <div class="stat-loading" style="grid-column:1/-1">&#9883; Loading news...</div>
+      </div>
+    </div>
+
+  </div><!-- end stats-body -->
+
+  <footer>
+    <div class="footer-logo"><span class="accent">Let&rsquo;s Go </span><span class="outline">Mets</span></div>
+    <div class="footer-links"><a href="https://www.mlb.com/mets">Official Site</a><a href="https://www.mlb.com/mets/tickets">Tickets</a><a href="https://www.mlb.com/mets/stats">Stats</a><a href="https://twitter.com/mets">Twitter / X</a></div>
+    <div class="footer-sub">Stats via MLB Stats API &middot; Blue &amp; Orange Forever &middot; Est. 1962</div>
+  </footer>
+</div>
+
+<!-- Game Detail Modal -->
+<div class="game-modal" id="game-modal" onclick="closeGameModal(event)">
+  <div class="game-modal-box">
+    <button class="gm-close" onclick="document.getElementById('game-modal').classList.remove('open')">&times;</button>
+    <div class="gm-status" id="gm-status"></div>
+    <div class="gm-score">
+      <div class="gm-team"><div class="gm-team-name" id="gm-away-name"></div><div class="gm-team-score" id="gm-away-score"></div></div>
+      <div class="gm-vs">vs</div>
+      <div class="gm-team"><div class="gm-team-name" id="gm-home-name"></div><div class="gm-team-score" id="gm-home-score"></div></div>
+    </div>
+    <div class="gm-details" id="gm-details"></div>
+  </div>
+</div>
+
 <!-- ════ FAN ZONE ════ -->
 <div class="page" id="page-fanzone">
   <div class="fz-hero">
@@ -819,7 +1050,7 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
               <div class="poll-opt" data-player="lindor" onclick="castVote('lindor')"><div class="poll-bar" id="bar-lindor"></div><div class="poll-opt-row"><span>Francisco Lindor</span><span class="poll-pct" id="pct-lindor">0%</span></div></div>
               <div class="poll-opt" data-player="bichette" onclick="castVote('bichette')"><div class="poll-bar" id="bar-bichette"></div><div class="poll-opt-row"><span>Bo Bichette</span><span class="poll-pct" id="pct-bichette">0%</span></div></div>
             </div>
-            <div class="poll-total-line" id="poll-total-line" style="display:none"><span id="poll-total">0</span> votes cast</div>
+            <div class="poll-total-line" id="poll-total-line" style="display:none"><span id="poll-total">0</span> total votes</div>
             <div class="poll-live-badge"><span class="poll-live-dot"></span>LIVE</div>
           </div>
         </div>
@@ -959,6 +1190,8 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
 
 
 <script>
+
+
 
 
 
@@ -1508,7 +1741,7 @@ function submitHotTake() {
   if (!inp) return;
   var text = inp.value.trim();
   if (!text) return;
-  var newTake = { id: 'ht' + Date.now(), text: text, up: 1, down: 0, ts: Date.now(), replies: [], pinned: false };
+  var newTake = { id: 'ht' + Date.now(), text: text, up: 0, down: 0, ts: Date.now(), replies: [], pinned: false };
   sharedTakes.unshift(newTake);
   _sharedSet(TAKES_KEY, sharedTakes);
   // takes saved via _sharedSet above
@@ -1833,6 +2066,551 @@ setInterval(_loadSharedTakes, 60000);
 startTT();
 
 
+
+
+
+
+
+// ══ STATS / SCORES / NEWS ══
+
+// ══════════════════════════════════════════
+// STATS PAGE — MLB Stats API
+// ══════════════════════════════════════════
+
+var MLB_API = 'https://statsapi.mlb.com/api/v1';
+var METS_ID = 121;
+var SEASON  = 2026;
+
+// Player IDs for Mets 2026 roster
+var METS_PLAYERS = {
+  hitting: [
+    { id: 665742, name: 'Juan Soto',          pid: 'soto'     },
+    { id: 596019, name: 'Francisco Lindor',   pid: 'lindor'   },
+    { id: 682668, name: 'Francisco Alvarez',  pid: 'alvarez'  },
+    { id: 666182, name: 'Bo Bichette',        pid: 'bichette' },
+    { id: 673357, name: 'Luis Robert Jr.',    pid: 'robert'   },
+    { id: 672621, name: 'Brett Baty',         pid: 'baty'     },
+    { id: 656555, name: 'MJ Melendez',        pid: 'melendez' },
+    { id: 677594, name: 'Ronny Mauricio',     pid: 'mauricio' },
+  ],
+  pitching: [
+    { id: 650333, name: 'Freddy Peralta',     pid: 'peralta'  },
+    { id: 640455, name: 'Sean Manaea',        pid: 'manaea'   },
+    { id: 663423, name: 'Clay Holmes',        pid: 'holmes'   },
+    { id: 641745, name: 'David Peterson',     pid: 'peterson' },
+  ]
+};
+
+// ── STATS TAB NAV ──
+var _tabsLoaded = {};
+function showStatsTab(id, btn) {
+  document.querySelectorAll('.stats-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.stats-tab').forEach(function(b){ b.classList.remove('active'); });
+  var panel = document.getElementById('stp-'+id);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (!_tabsLoaded[id]) {
+    _tabsLoaded[id] = true;
+    if (id === 'pitching') loadPitchingStats();
+    if (id === 'standings') loadStandings();
+    if (id === 'recent') loadRecentGames();
+    if (id === 'news') loadNews();
+  }
+}
+
+// ── FETCH HELPER ──
+function _mlbFetch(url, cb) {
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(d){ cb(null, d); })
+    .catch(function(e){ cb(e, null); });
+}
+
+// ── SCORE WIDGET ──
+function loadScoreWidget() {
+  var bar = document.getElementById('score-widget-bar');
+  if (!bar) return;
+  var today = new Date();
+  var dateStr = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  // Also check yesterday in case today's game hasn't started
+  var yesterday = new Date(today - 86400000);
+  var yestStr = yesterday.getFullYear()+'-'+String(yesterday.getMonth()+1).padStart(2,'0')+'-'+String(yesterday.getDate()).padStart(2,'0');
+  var url = MLB_API+'/schedule?sportId=1&teamId='+METS_ID+'&startDate='+yestStr+'&endDate='+dateStr+'&hydrate=linescore,team&gameType=R,F,D,L,W';
+
+  _mlbFetch(url, function(err, data) {
+    if (err || !data || !data.dates) {
+      bar.innerHTML = '<div class="sw-no-game"><span class="sw-no-game-text">Score data unavailable</span></div>';
+      return;
+    }
+    var games = [];
+    (data.dates || []).forEach(function(d){ (d.games||[]).forEach(function(g){ games.push(g); }); });
+    if (!games.length) {
+      // No Mets game - show next scheduled game
+      var nextUrl = MLB_API+'/schedule?sportId=1&teamId='+METS_ID+'&startDate='+dateStr+'&endDate=2026-10-04&hydrate=team&gameType=R,F,D,L,W';
+      _mlbFetch(nextUrl, function(err2, data2) {
+        var nextGames = [];
+        if (!err2 && data2 && data2.dates) {
+          data2.dates.forEach(function(d){ (d.games||[]).forEach(function(g){ nextGames.push(g); }); });
+        }
+        if (nextGames.length) {
+          var ng = nextGames[0];
+          var away = ((ng.teams||{}).away||{}).team||{};
+          var home = ((ng.teams||{}).home||{}).team||{};
+          var ngDate = (ng.gameDate||'').substring(0,10);
+          bar.innerHTML = '<div class="sw-no-game"><span class="sw-no-game-text">No game today &mdash; Next: '+away.teamName+' @ '+home.teamName+' on '+ngDate+'</span></div>';
+        } else {
+          bar.innerHTML = '<div class="sw-no-game"><span class="sw-no-game-text">No games scheduled &mdash; Check MLB.com for updates</span></div>';
+        }
+      });
+      return;
+    }
+    // Sort: live first, then most recent
+    games.sort(function(a,b){
+      var aLive = a.status && a.status.abstractGameState === 'Live' ? 0 : 1;
+      var bLive = b.status && b.status.abstractGameState === 'Live' ? 0 : 1;
+      return aLive - bLive || b.gamePk - a.gamePk;
+    });
+    bar.innerHTML = games.slice(0,3).map(function(g){ return buildScoreWidget(g); }).join('');
+  });
+}
+
+function buildScoreWidget(g) {
+  var status = g.status || {};
+  var state = status.abstractGameState || 'Preview';
+  var detailState = status.detailedState || '';
+  var away = (g.teams||{}).away || {};
+  var home = (g.teams||{}).home || {};
+  var awayName = (away.team||{}).teamName || 'Away';
+  var homeName = (home.team||{}).teamName || 'Home';
+  var awayScore = away.score !== undefined ? away.score : '';
+  var homeScore = home.score !== undefined ? home.score : '';
+  var ls = g.linescore || {};
+  var inning = ls.currentInningOrdinal || '';
+  var half = ls.inningHalf || '';
+  var isLive = state === 'Live';
+  var isFinal = state === 'Final';
+  var isPreview = state === 'Preview';
+  var statusLabel = isLive ? (half+' '+inning) : isFinal ? 'Final' : detailState || 'Scheduled';
+  var awayWin = isFinal && parseInt(awayScore) > parseInt(homeScore);
+  var homeWin = isFinal && parseInt(homeScore) > parseInt(awayScore);
+
+  var html = '<div class="sw-game" onclick="openGameModal('+g.gamePk+')">';
+  html += '<div class="sw-game-inner">';
+  html += '<div class="sw-status'+(isLive?' live':'')+'">'+statusLabel+'</div>';
+  html += '<div class="sw-teams">';
+  html += '<div class="sw-team-row"><span class="sw-team-name'+(awayWin?' winner':'')+'">'+awayName+'</span><span class="sw-team-score">'+(isPreview?'':awayScore)+'</span></div>';
+  html += '<div class="sw-team-row"><span class="sw-team-name'+(homeWin?' winner':'')+'">'+homeName+'</span><span class="sw-team-score">'+(isPreview?'':homeScore)+'</span></div>';
+  html += '</div></div></div>';
+  return html;
+}
+
+var _gameCache = {};
+function openGameModal(gamePk) {
+  var modal = document.getElementById('game-modal');
+  if (!modal) return;
+  modal.classList.add('open');
+  document.getElementById('gm-status').textContent = 'Loading...';
+  document.getElementById('gm-away-name').textContent = '';
+  document.getElementById('gm-home-name').textContent = '';
+  document.getElementById('gm-away-score').textContent = '';
+  document.getElementById('gm-home-score').textContent = '';
+  document.getElementById('gm-details').innerHTML = '';
+
+  var url = MLB_API+'/schedule?gamePk='+gamePk+'&hydrate=linescore,team';
+  _mlbFetch(url, function(err, data) {
+    if (err || !data || !data.dates || !data.dates[0] || !data.dates[0].games || !data.dates[0].games[0]) {
+      document.getElementById('gm-status').textContent = 'Could not load game data'; return;
+    }
+    var g2 = data.dates[0].games[0];
+    var ls2 = g2.linescore || {};
+    var awayTeam = ((g2.teams||{}).away||{});
+    var homeTeam = ((g2.teams||{}).home||{});
+    var awayScore = awayTeam.score !== undefined ? awayTeam.score : (ls2.teams && ls2.teams.away ? ls2.teams.away.runs : '—');
+    var homeScore = homeTeam.score !== undefined ? homeTeam.score : (ls2.teams && ls2.teams.home ? ls2.teams.home.runs : '—');
+    var awayName = (awayTeam.team||{}).teamName || 'Away';
+    var homeName = (homeTeam.team||{}).teamName || 'Home';
+    var innings = ls2.currentInning || (g2.status && g2.status.detailedState) || '—';
+    var half = ls2.inningHalf || '';
+    var _awayHits = ls2.teams && ls2.teams.away ? ls2.teams.away.hits : undefined;
+    var _homeHits = ls2.teams && ls2.teams.home ? ls2.teams.home.hits : undefined;
+    var _awayErr  = ls2.teams && ls2.teams.away ? ls2.teams.away.errors : undefined;
+    var _homeErr  = ls2.teams && ls2.teams.home ? ls2.teams.home.errors : undefined;
+
+    document.getElementById('gm-status').textContent = (half+' '+innings).trim() || 'Game';
+    document.getElementById('gm-away-name').textContent = awayName;
+    document.getElementById('gm-home-name').textContent = homeName;
+    document.getElementById('gm-away-score').textContent = awayScore;
+    document.getElementById('gm-home-score').textContent = homeScore;
+
+    // Winner highlight
+    if (awayScore > homeScore) document.getElementById('gm-away-score').classList.add('winner');
+    else if (homeScore > awayScore) document.getElementById('gm-home-score').classList.add('winner');
+
+    // Detail stats
+    var det = document.getElementById('gm-details');
+    var awayHits   = _awayHits !== undefined ? _awayHits : '—';
+    var homeHits   = _homeHits !== undefined ? _homeHits : '—';
+    var awayErrors = _awayErr  !== undefined ? _awayErr  : '—';
+    var homeErrors = _homeErr  !== undefined ? _homeErr  : '—';
+    det.innerHTML =
+      '<div class="gm-detail"><div class="gm-detail-val">'+awayHits+' / '+homeHits+'</div><div class="gm-detail-lbl">Hits</div></div>'+
+      '<div class="gm-detail"><div class="gm-detail-val">'+awayErrors+' / '+homeErrors+'</div><div class="gm-detail-lbl">Errors</div></div>';
+  });
+}
+
+function closeGameModal(e) {
+  if (e.target === document.getElementById('game-modal')) document.getElementById('game-modal').classList.remove('open');
+}
+
+// ── HITTING STATS ──
+function loadHittingStats() {
+  var container = document.getElementById('hitting-table-body');
+  if (!container) return;
+  var players = METS_PLAYERS.hitting;
+  var results = [];
+  var loaded = 0;
+
+  players.forEach(function(p) {
+    var url = MLB_API+'/people/'+p.id+'/stats?stats=season&group=hitting&season='+SEASON+'&hydrate=person';
+    _mlbFetch(url, function(err, data) {
+      loaded++;
+      var stats = {};
+      if (!err && data && data.stats && data.stats[0] && data.stats[0].splits && data.stats[0].splits[0]) {
+        stats = data.stats[0].splits[0].stat || {};
+      }
+      results.push({
+        name: p.name, pid: p.pid,
+        avg: stats.avg || '.---',
+        hr: stats.homeRuns !== undefined ? stats.homeRuns : '—',
+        rbi: stats.rbi !== undefined ? stats.rbi : '—',
+        ops: stats.ops || '.---',
+        sb: stats.stolenBases !== undefined ? stats.stolenBases : '—',
+        h: stats.hits !== undefined ? stats.hits : '—',
+        g: stats.gamesPlayed !== undefined ? stats.gamesPlayed : '—'
+      });
+      if (loaded === players.length) renderHittingTable(results, container);
+    });
+  });
+}
+
+function renderHittingTable(results, container) {
+  // Sort by AVG descending
+  results.sort(function(a,b){
+    var av = parseFloat(String(a.avg).replace('.---','0')) || 0;
+    var bv = parseFloat(String(b.avg).replace('.---','0')) || 0;
+    return bv - av;
+  });
+  var html = '<table class="stat-table"><thead><tr>'+
+    '<th>Player</th><th class="num">G</th><th class="num">AVG</th><th class="num">HR</th>'+
+    '<th class="num">RBI</th><th class="num">OPS</th><th class="num">SB</th><th class="num">H</th>'+
+    '</tr></thead><tbody>';
+  results.forEach(function(r) {
+    var thumb = (typeof playersData !== 'undefined' && playersData[r.pid] && playersData[r.pid].photo)
+      ? '<img class="stat-thumb" src="'+playersData[r.pid].photo+'" alt="">' : '';
+    html += '<tr>'+
+      '<td><div class="player-cell">'+thumb+'<span>'+r.name+'</span></div></td>'+
+      '<td class="num">'+r.g+'</td>'+
+      '<td class="num highlight">'+r.avg+'</td>'+
+      '<td class="num">'+r.hr+'</td>'+
+      '<td class="num">'+r.rbi+'</td>'+
+      '<td class="num">'+r.ops+'</td>'+
+      '<td class="num">'+r.sb+'</td>'+
+      '<td class="num">'+r.h+'</td>'+
+      '</tr>';
+  });
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+// ── PITCHING STATS ──
+function loadPitchingStats() {
+  var container = document.getElementById('pitching-table-body');
+  if (!container) return;
+  var players = METS_PLAYERS.pitching;
+  var results = [];
+  var loaded = 0;
+
+  players.forEach(function(p) {
+    var url = MLB_API+'/people/'+p.id+'/stats?stats=season&group=pitching&season='+SEASON;
+    _mlbFetch(url, function(err, data) {
+      loaded++;
+      var stats = {};
+      if (!err && data && data.stats && data.stats[0] && data.stats[0].splits && data.stats[0].splits[0]) {
+        stats = data.stats[0].splits[0].stat || {};
+      }
+      results.push({
+        name: p.name, pid: p.pid,
+        era: stats.era || '-.--',
+        w: stats.wins !== undefined ? stats.wins : '—',
+        l: stats.losses !== undefined ? stats.losses : '—',
+        so: stats.strikeOuts !== undefined ? stats.strikeOuts : '—',
+        ip: stats.inningsPitched || '—',
+        whip: stats.whip || '-.-',
+        bb: stats.baseOnBalls !== undefined ? stats.baseOnBalls : '—',
+        g: stats.gamesPlayed !== undefined ? stats.gamesPlayed : '—'
+      });
+      if (loaded === players.length) renderPitchingTable(results, container);
+    });
+  });
+}
+
+function renderPitchingTable(results, container) {
+  results.sort(function(a,b){
+    var av = parseFloat(String(a.era).replace('-.--','99')) || 99;
+    var bv = parseFloat(String(b.era).replace('-.--','99')) || 99;
+    return av - bv;
+  });
+  var html = '<table class="stat-table"><thead><tr>'+
+    '<th>Player</th><th class="num">G</th><th class="num">ERA</th><th class="num">W</th>'+
+    '<th class="num">L</th><th class="num">IP</th><th class="num">K</th><th class="num">WHIP</th>'+
+    '</tr></thead><tbody>';
+  results.forEach(function(r) {
+    var thumb = (typeof playersData !== 'undefined' && playersData[r.pid] && playersData[r.pid].photo)
+      ? '<img class="stat-thumb" src="'+playersData[r.pid].photo+'" alt="">' : '';
+    html += '<tr>'+
+      '<td><div class="player-cell">'+thumb+'<span>'+r.name+'</span></div></td>'+
+      '<td class="num">'+r.g+'</td>'+
+      '<td class="num highlight">'+r.era+'</td>'+
+      '<td class="num">'+r.w+'</td>'+
+      '<td class="num">'+r.l+'</td>'+
+      '<td class="num">'+r.ip+'</td>'+
+      '<td class="num">'+r.so+'</td>'+
+      '<td class="num">'+r.whip+'</td>'+
+      '</tr>';
+  });
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+// ── STANDINGS ──
+function loadStandings() {
+  var nleEl = document.getElementById('nle-standings');
+  var gridEl = document.getElementById('nl-standings-grid');
+  var url = MLB_API+'/standings?leagueId=104&season='+SEASON+'&standingsTypes=regularSeason&hydrate=team';
+  _mlbFetch(url, function(err, data) {
+    if (err || !data || !data.records) {
+      if (nleEl) nleEl.innerHTML = '<div class="stat-error">Could not load standings.</div>';
+      return;
+    }
+    var nleHtml = '';
+    var gridHtml = '';
+
+    data.records.forEach(function(div) {
+      var divId = (div.division||{}).id;
+      var divName = (div.division||{}).nameShort || (div.division||{}).name || 'NL Division';
+      var isNLE = divName.indexOf('East') !== -1 || divId === 201;
+
+      var rows = (div.teamRecords||[]).map(function(t, i) {
+        var teamName = (t.team||{}).name || 'Team';
+        var isMets = (t.team||{}).id === METS_ID;
+        var w = t.wins || 0, l = t.losses || 0;
+        var gb = t.gamesBack || '—';
+        var pct = t.winningPercentage || '.000';
+        return '<div class="standings-row'+(isMets?' mets-row':'')+'">'+
+          '<span class="standings-pos">'+(i+1)+'</span>'+
+          '<span class="standings-team'+(isMets?' mets':'')+'">'+teamName+'</span>'+
+          '<span class="standings-num">'+w+'</span>'+
+          '<span class="standings-num">'+l+'</span>'+
+          '<span class="standings-pct">'+pct+'</span>'+
+          '<span class="standings-gb">'+gb+'</span>'+
+          '</div>';
+      }).join('');
+
+      var headerRow = '<div class="standings-row" style="opacity:.5;pointer-events:none">'+
+        '<span></span><span style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:700">Team</span>'+
+        '<span class="standings-num" style="font-size:.58rem;letter-spacing:2px;color:rgba(255,255,255,.3)">W</span>'+
+        '<span class="standings-num" style="font-size:.58rem;letter-spacing:2px;color:rgba(255,255,255,.3)">L</span>'+
+        '<span class="standings-pct" style="font-size:.58rem;letter-spacing:2px;color:rgba(255,255,255,.3)">PCT</span>'+
+        '<span class="standings-gb" style="font-size:.58rem;letter-spacing:2px;color:rgba(255,255,255,.3)">GB</span>'+
+        '</div>';
+
+      if (isNLE && nleEl) {
+        nleEl.innerHTML = '<div class="standings-card"><div class="standings-div-head">'+divName+' &mdash; NL East</div>'+headerRow+rows+'</div>';
+      }
+      gridHtml += '<div class="standings-card"><div class="standings-div-head">'+divName+'</div>'+headerRow+rows+'</div>';
+    });
+
+    if (gridEl) gridEl.innerHTML = gridHtml || '<div class="stat-error">No data</div>';
+  });
+}
+
+// ── RECENT GAMES ──
+function loadRecentGames() {
+  var listEl = document.getElementById('recent-games-list');
+  var summaryEl = document.getElementById('season-summary-card');
+  var today = new Date();
+  var start = new Date(today - 86400000 * 20);
+  var fmt = function(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+  var url = MLB_API+'/schedule?sportId=1&teamId='+METS_ID+'&startDate='+fmt(start)+'&endDate='+fmt(today)+'&hydrate=linescore,decisions,team&gameType=R,F,D,L,W';
+
+  _mlbFetch(url, function(err, data) {
+    if (err || !data || !data.dates) {
+      if (listEl) listEl.innerHTML = '<div class="stat-error">Could not load recent games.</div>';
+      return;
+    }
+    var games = [];
+    (data.dates||[]).forEach(function(d){ (d.games||[]).forEach(function(g){ games.push(g); }); });
+    games = games.filter(function(g){ return (g.status||{}).abstractGameState === 'Final'; });
+    games.sort(function(a,b){ return b.gamePk - a.gamePk; });
+    games = games.slice(0,15);
+
+    if (!games.length) {
+      if (listEl) listEl.innerHTML = '<div class="stat-error">No completed games found in last 20 days.</div>';
+      return;
+    }
+
+    var wins = 0, losses = 0;
+    var html = '<div class="recent-games-list">';
+    games.forEach(function(g) {
+      var homeTeamId = ((g.teams||{}).home||{}).team ? ((g.teams.home||{}).team||{}).id : 0;
+      var isHome = homeTeamId === METS_ID;
+      var myScore = isHome ? ((g.teams.home||{}).score||0) : ((g.teams.away||{}).score||0);
+      var oppScore = isHome ? ((g.teams.away||{}).score||0) : ((g.teams.home||{}).score||0);
+      var oppTeam = isHome ? (g.teams.away||{}).team : (g.teams.home||{}).team;
+      var oppName = (oppTeam||{}).teamName || 'Opponent';
+      var result = parseInt(myScore) > parseInt(oppScore) ? 'W' : 'L';
+      if (result==='W') wins++; else losses++;
+      var dateStr = (g.gameDate||'').substring(5,10).replace('-','/');
+      html += '<div class="rg-row">'+
+        '<span class="rg-date">'+dateStr+'</span>'+
+        '<span class="rg-result '+result+'">'+result+'</span>'+
+        '<span class="rg-opp">'+(isHome?'vs ':'@ ')+oppName+'</span>'+
+        '<span class="rg-score">'+myScore+' &ndash; '+oppScore+'</span>'+
+        '<span class="rg-home">'+(isHome?'Home':'Away')+'</span>'+
+        '</div>';
+    });
+    html += '</div>';
+    if (listEl) listEl.innerHTML = html;
+
+    // Summary card
+    if (summaryEl) {
+      var total = wins+losses;
+      var pct = total > 0 ? (wins/total).toFixed(3).replace(/^0/,'') : '.000';
+      var streak = 0, streakType = '';
+      for (var i=0;i<games.length;i++){
+        var r2 = ((games[i].teams.home||{}).team||{}).id===METS_ID ?
+          ((games[i].teams.home||{}).score||0) > ((games[i].teams.away||{}).score||0) ? 'W':'L' :
+          ((games[i].teams.away||{}).score||0) > ((games[i].teams.home||{}).score||0) ? 'W':'L';
+        if(i===0){ streakType=r2; streak=1; }
+        else if(r2===streakType) streak++;
+        else break;
+      }
+      summaryEl.innerHTML = '<div class="lb-box">'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:0">'+
+        '<div class="te-stat"><div class="te-stat-val" style="color:#22c55e">'+wins+'</div><div class="te-stat-lbl">Wins</div></div>'+
+        '<div class="te-stat"><div class="te-stat-val" style="color:#ef4444">'+losses+'</div><div class="te-stat-lbl">Losses</div></div>'+
+        '<div class="te-stat"><div class="te-stat-val">'+pct+'</div><div class="te-stat-lbl">Win %</div></div>'+
+        '</div>'+
+        '<div style="margin-top:12px;padding:14px;background:rgba(255,255,255,.04);border-radius:10px;text-align:center">'+
+        '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:2rem;font-weight:900;color:'+(streakType==='W'?'#22c55e':'#ef4444')+'">'+streakType+streak+'</div>'+
+        '<div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:700;margin-top:4px">Current Streak</div>'+
+        '</div>'+
+        '</div>';
+    }
+  });
+}
+
+// ── NEWS ──
+// Uses RSS2JSON (free, no key for public feeds) to convert MLB's RSS to JSON
+function loadNews() {
+  var grid = document.getElementById('news-grid');
+  if (!grid) return;
+
+  // Curated fallback - always shown if APIs fail
+  var fallbackNews = [
+    { title: 'Juan Soto Arrives in Queens: $765M Man Takes the Field', desc: 'The largest contract in sports history kicks off as Soto dons Mets blue and orange for the first time at Citi Field.', date: 'Spring 2026', source: 'MLB.com', link: 'https://www.mlb.com/mets/news', icon: '⚾' },
+    { title: 'Freddy Peralta Named Opening Day Starter', desc: "Acquired from Milwaukee, Peralta earns the ball for the 2026 opener against Pittsburgh. He is ready for the New York moment.", date: 'Spring 2026', source: 'MLB.com', link: 'https://www.mlb.com/mets/news', icon: '🔥' },
+    { title: 'Bo Bichette Signs: A $126M Bat Joins the Mets Lineup', desc: "The son of Dante Bichette brings his elite contact hitting to Queens. The middle of this order is now dangerous.", date: 'Offseason 2025', source: 'NY Post', link: 'https://nypost.com/tag/new-york-mets/', icon: '💰' },
+    { title: 'Luis Robert Jr. Trade: Five-Tool Outfielder Lands in NY', desc: "Robert brings Gold Glove defense and 30-HR power potential to center field. When healthy, one of baseball most exciting players.", date: 'Offseason 2025', source: 'The Athletic', link: 'https://www.nytimes.com/athletic/team/new-york-mets/', icon: '⚡' },
+    { title: 'Francisco Alvarez: The Breakout Season Everyone Is Waiting For', desc: 'At 24, the former #1 prospect enters 2026 with all the tools to become the best catcher in the NL. This is his year.', date: 'Spring 2026', source: 'MLB.com', link: 'https://www.mlb.com/mets/news', icon: '🌟' },
+    { title: 'Subway Series Preview: May 12–14 at Citi Field', desc: 'The Mets host the Yankees for three games in May. With both rosters loaded, this could be the most anticipated Subway Series in years.', date: 'Spring 2026', source: 'ESPN', link: 'https://www.espn.com/mlb/team/_/name/nym/new-york-mets', icon: '🚇' }
+  ];
+
+  // Try rss2json (free, no key, reliable CORS proxy for RSS)
+  var rssUrl = 'https://www.mlb.com/feeds/news/rss.xml?teamId=121';
+  var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl) + '&count=6';
+
+  fetch(apiUrl)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d || d.status !== 'ok' || !d.items || !d.items.length) throw new Error('bad response');
+      var stories = d.items.map(function(item) {
+        var desc = (item.description || item.content || '').replace(/<[^>]+>/g, '').trim().substring(0, 140);
+        return {
+          title: item.title || '',
+          desc: desc + (desc.length >= 140 ? '...' : ''),
+          date: item.pubDate || '',
+          link: item.link || 'https://www.mlb.com/mets/news',
+          source: 'MLB.com',
+          icon: '⚾'
+        };
+      });
+      renderNews(grid, stories);
+    })
+    .catch(function() {
+      // Fallback: try NY Post via rss2json
+      var nypRss = 'https://nypost.com/tag/new-york-mets/feed/';
+      var nypApi = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(nypRss) + '&count=6';
+      fetch(nypApi)
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (!d || d.status !== 'ok' || !d.items || !d.items.length) throw new Error('bad');
+          var stories = d.items.map(function(item) {
+            var desc = (item.description || '').replace(/<[^>]+>/g, '').trim().substring(0, 140);
+            return {
+              title: item.title || '',
+              desc: desc + (desc.length >= 140 ? '...' : ''),
+              date: item.pubDate || '',
+              link: item.link || 'https://nypost.com/tag/new-york-mets/',
+              source: 'NY Post',
+              icon: '📰'
+            };
+          });
+          renderNews(grid, stories);
+        })
+        .catch(function() { renderNews(grid, fallbackNews); });
+    });
+}
+
+function renderNews(grid, stories) {
+  if (!stories.length) { grid.innerHTML = '<div class="stat-error">Could not load news. <a href="https://www.mlb.com/mets/news" style="color:var(--orange)">Visit MLB.com</a></div>'; return; }
+  grid.innerHTML = stories.map(function(s){
+    var dateStr = s.date ? new Date(s.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : s.date;
+    if (dateStr === 'Invalid Date') dateStr = s.date;
+    return '<a class="news-card" href="'+s.link+'" target="_blank" rel="noopener">'+
+      '<div class="news-img-placeholder">'+s.icon+'</div>'+
+      '<div class="news-body">'+
+        '<div class="news-source">'+s.source+'</div>'+
+        '<div class="news-title">'+s.title+'</div>'+
+        '<div class="news-desc">'+s.desc+'</div>'+
+        '<div class="news-date">'+dateStr+'</div>'+
+      '</div>'+
+      '</a>';
+  }).join('');
+}
+
+// ── BOOT: load stats when stats page is visited ──
+var _statsLoaded = false;
+var _origShowPage = showPage;
+showPage = function(id) {
+  _origShowPage(id);
+  if (id === 'stats' && !_statsLoaded) {
+    _statsLoaded = true;
+    _tabsLoaded['hitting'] = true;
+    _tabsLoaded['standings'] = true;
+    _tabsLoaded['recent'] = true;
+    _tabsLoaded['news'] = true;
+    loadScoreWidget();
+    loadHittingStats();
+    loadStandings();
+    loadRecentGames();
+    loadNews();
+    // Refresh score widget every 60s
+    setInterval(loadScoreWidget, 60000);
+  }
+};
+// Also load score widget on home page visit
+_origShowPage('home');
 
 
 

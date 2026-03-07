@@ -611,6 +611,175 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
   .news-grid{grid-template-columns:1fr;}
   .standings-row{grid-template-columns:20px 1fr 32px 32px 44px 44px;gap:4px;font-size:.75rem;}
 }
+
+/* ══ HYPE METER ══ */
+.hype-section{background:linear-gradient(135deg,var(--blue-dark) 0%,rgba(0,20,60,.95) 100%);padding:32px 24px;border-top:1px solid rgba(255,255,255,.07);}
+.hype-section-title{font-family:"Barlow Condensed",sans-serif;font-size:.75rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;text-align:center;}
+#hype-meter{max-width:700px;margin:0 auto;}
+.hype-total{text-align:center;font-size:.78rem;color:rgba(255,255,255,.4);letter-spacing:1px;margin-bottom:16px;}
+#hype-total-num{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:#fff;}
+.hype-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.hype-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 16px;cursor:pointer;transition:all .2s;min-width:130px;text-align:left;position:relative;overflow:hidden;}
+.hype-btn:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+.hype-btn.reacted{border-color:var(--hype-color);background:rgba(255,255,255,.08);}
+.hype-btn.hype-burst{animation:hype-pop .5s ease;}
+@keyframes hype-pop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+.hype-emoji-label{font-size:.78rem;font-weight:700;color:#fff;display:block;margin-bottom:8px;}
+.hype-bar-wrap{background:rgba(255,255,255,.08);border-radius:4px;height:4px;margin-bottom:6px;overflow:hidden;}
+.hype-bar{height:100%;border-radius:4px;transition:width .5s ease;}
+.hype-count{font-family:"Barlow Condensed",sans-serif;font-size:.85rem;font-weight:900;color:rgba(255,255,255,.5);}
+#hype-meter.hype-hot .hype-btn{animation:hype-pulse 2s ease infinite;}
+@keyframes hype-pulse{0%,100%{box-shadow:none}50%{box-shadow:0 0 16px rgba(255,89,16,.3)}}
+
+/* ══ SEASON LEADERBOARD ══ */
+.slb-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:10px;transition:background .15s;}
+.slb-row:hover{background:rgba(255,255,255,.04);}
+.slb-row.slb-me{background:rgba(255,89,16,.1);border:1px solid rgba(255,89,16,.2);}
+.slb-rank{font-size:1rem;min-width:28px;text-align:center;}
+.slb-name{flex:1;font-weight:600;color:rgba(255,255,255,.85);font-size:.88rem;}
+.slb-pts{font-family:"Barlow Condensed",sans-serif;font-size:1rem;font-weight:900;color:var(--orange);}
+.slb-you{font-size:.55rem;letter-spacing:2px;background:var(--orange);color:#fff;padding:2px 6px;border-radius:4px;font-weight:800;text-transform:uppercase;margin-left:6px;}
+.slb-empty{font-size:.8rem;color:rgba(255,255,255,.3);text-align:center;padding:20px;}
+
+/* ══ PROFILE WIDGET ══ */
+.profile-setup{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:24px;}
+.profile-title{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:6px;}
+.profile-sub{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:16px;line-height:1.5;}
+.profile-inp-row{display:flex;gap:10px;}
+.profile-inp{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#fff;font-size:.85rem;outline:none;}
+.profile-inp:focus{border-color:var(--orange);}
+.profile-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:20px;display:flex;align-items:center;gap:16px;}
+.profile-avatar{width:48px;height:48px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;flex-shrink:0;}
+.profile-info{flex:1;}
+.profile-name{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;}
+.profile-pts{font-size:.78rem;color:var(--orange);font-weight:600;margin-top:2px;}
+.profile-reset{background:none;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.4);font-size:.7rem;padding:6px 12px;cursor:pointer;transition:all .2s;}
+.profile-reset:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ══ POINTS BADGE ══ */
+#my-points-badge{position:fixed;bottom:20px;right:20px;background:var(--orange);color:#fff;font-family:"Barlow Condensed",sans-serif;font-size:.85rem;font-weight:900;letter-spacing:1px;padding:8px 16px;border-radius:20px;z-index:300;box-shadow:0 4px 20px rgba(255,89,16,.4);transition:transform .3s;cursor:pointer;}
+#my-points-badge:hover{transform:scale(1.05);}
+.pts-flash{animation:pts-pop .6s ease;}
+@keyframes pts-pop{0%{transform:scale(1)}30%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+/* ══ FAV PLAYER WIDGET ══ */
+.fpw-empty{display:flex;align-items:center;gap:12px;padding:20px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.15);border-radius:14px;font-size:.82rem;color:rgba(255,255,255,.4);}
+.fpw-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,89,16,.25);border-radius:16px;padding:20px;}
+.fpw-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.fpw-photo{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;border:2px solid var(--orange);}
+.fpw-photo-ph{width:56px;height:56px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:rgba(255,255,255,.5);flex-shrink:0;}
+.fpw-name{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:#fff;text-transform:uppercase;}
+.fpw-pos{font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:8px;}
+.fpw-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.fpw-stat{background:rgba(255,255,255,.05);border-radius:8px;padding:10px;text-align:center;}
+.fpw-stat-val{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:#fff;}
+.fpw-stat-lbl{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;margin-top:2px;}
+.fpw-change{background:none;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.4);font-size:.72rem;padding:6px 12px;cursor:pointer;transition:all .2s;}
+.fpw-change:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ══ FAV STAR on roster cards ══ */
+.fav-star{position:absolute;top:8px;right:8px;background:none;border:none;font-size:1.1rem;color:rgba(0,45,114,.25);cursor:pointer;line-height:1;padding:2px;transition:all .2s;z-index:2;}
+.fav-star:hover{color:var(--orange);transform:scale(1.2);}
+.fav-star.active{color:var(--orange);}
+.player-card{position:relative;}
+
+/* ══ STAT CROWN ══ */
+.stat-crown{font-size:.75rem;vertical-align:middle;}
+
+/* ══ TOAST ══ */
+#toast-container{position:fixed;bottom:70px;right:20px;z-index:400;display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
+.toast{background:rgba(20,30,50,.95);backdrop-filter:blur(8px);border:1px solid rgba(255,89,16,.3);border-radius:12px;padding:12px 18px;font-size:.82rem;color:#fff;font-weight:600;opacity:0;transform:translateX(20px);transition:all .3s;max-width:280px;}
+.toast.show{opacity:1;transform:translateX(0);}
+
+/* ══ FAN ZONE PANEL: Points & Profile ══ */
+.fzp-points-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.points-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:24px;}
+.points-card-title{font-family:"Barlow Condensed",sans-serif;font-size:.8rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px;}
+.how-to-earn{display:flex;flex-direction:column;gap:8px;}
+.earn-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;font-size:.8rem;color:rgba(255,255,255,.65);}
+.earn-pts{font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:900;color:var(--orange);}
+@media(max-width:700px){.fzp-points-grid{grid-template-columns:1fr;}.hype-btns{flex-direction:column;align-items:stretch;}.hype-btn{min-width:unset;}}
+
+/* ════ POINTS PAGE ════ */
+.pts-section-label{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;}
+.pts-lb-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:20px;}
+.pts-empty{font-size:.82rem;color:rgba(255,255,255,.4);text-align:center;padding:20px;}
+/* Earn items */
+.pts-earn-item{display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;transition:all .2s;}
+.pts-earn-item:hover{background:rgba(255,255,255,.1);border-color:rgba(255,89,16,.35);transform:translateX(4px);}
+.pts-earn-icon{font-size:1.05rem;flex-shrink:0;width:26px;text-align:center;}
+.pts-earn-name{flex:1;font-size:.83rem;color:rgba(255,255,255,.82);font-weight:500;}
+.pts-earn-badge{background:rgba(255,89,16,.2);border:1px solid rgba(255,89,16,.35);color:var(--orange);font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:900;padding:3px 10px;border-radius:6px;white-space:nowrap;}
+/* Points page responsive */
+@media(max-width:860px){.pts-body-grid{grid-template-columns:1fr!important;}}
+/* Profile widget on dark bg */
+.profile-setup{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;}
+.profile-title{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:6px;}
+.profile-sub{font-size:.78rem;color:rgba(255,255,255,.55);margin-bottom:16px;line-height:1.5;}
+.profile-inp{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:10px 14px;color:#fff;font-size:.85rem;outline:none;font-family:"Barlow",sans-serif;}
+.profile-inp::placeholder{color:rgba(255,255,255,.3);}
+.profile-inp:focus{border-color:var(--orange);}
+.profile-inp-row{display:flex;gap:10px;}
+.profile-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px;display:flex;align-items:center;gap:14px;}
+.profile-avatar{width:46px;height:46px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;flex-shrink:0;}
+.profile-name{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;}
+.profile-pts{font-size:.76rem;color:var(--orange);font-weight:600;margin-top:3px;}
+.profile-info{flex:1;}
+.profile-reset{background:none;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.45);font-size:.68rem;padding:6px 10px;cursor:pointer;transition:all .2s;font-family:"Barlow",sans-serif;}
+.profile-reset:hover{border-color:var(--orange);color:var(--orange);}
+/* Fav player widget on dark bg */
+.fpw-empty{display:flex;align-items:center;gap:10px;padding:18px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.15);border-radius:13px;font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.5;}
+.fpw-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,89,16,.22);border-radius:14px;padding:18px;}
+.fpw-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.fpw-photo{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--orange);flex-shrink:0;}
+.fpw-photo-ph{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:rgba(255,255,255,.5);flex-shrink:0;}
+.fpw-name{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;font-weight:900;color:#fff;text-transform:uppercase;}
+.fpw-pos{font-size:.68rem;color:rgba(255,255,255,.45);margin-bottom:7px;}
+.fpw-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+.fpw-stat{background:rgba(255,255,255,.05);border-radius:8px;padding:10px;text-align:center;}
+.fpw-stat-val{font-family:"Barlow Condensed",sans-serif;font-size:1.2rem;font-weight:900;color:#fff;}
+.fpw-stat-lbl{font-size:.53rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);font-weight:600;margin-top:2px;}
+.fpw-change{background:none;border:1px solid rgba(255,255,255,.13);border-radius:8px;color:rgba(255,255,255,.4);font-size:.7rem;padding:5px 12px;cursor:pointer;transition:all .2s;font-family:"Barlow",sans-serif;}
+.fpw-change:hover{border-color:var(--orange);color:var(--orange);}
+/* Leaderboard rows */
+.slb-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;transition:background .15s;}
+.slb-row:hover{background:rgba(255,255,255,.05);}
+.slb-row.slb-me{background:rgba(255,89,16,.1);border:1px solid rgba(255,89,16,.25);}
+.slb-rank{font-size:.95rem;min-width:26px;text-align:center;}
+.slb-name{flex:1;font-weight:600;color:rgba(255,255,255,.88);font-size:.86rem;}
+.slb-pts{font-family:"Barlow Condensed",sans-serif;font-size:1rem;font-weight:900;color:var(--orange);}
+.slb-you{font-size:.52rem;letter-spacing:1.5px;background:var(--orange);color:#fff;padding:2px 6px;border-radius:4px;font-weight:800;text-transform:uppercase;margin-left:5px;}
+.slb-empty{font-size:.8rem;color:rgba(255,255,255,.4);text-align:center;padding:20px;}
+/* Points badge float */
+#my-points-badge{position:fixed;bottom:20px;right:20px;background:var(--orange);color:#fff;font-family:"Barlow Condensed",sans-serif;font-size:.88rem;font-weight:900;letter-spacing:1px;padding:9px 18px;border-radius:22px;z-index:300;box-shadow:0 4px 24px rgba(255,89,16,.45);transition:transform .25s,box-shadow .25s;cursor:pointer;border:none;}
+#my-points-badge:hover{transform:scale(1.06);box-shadow:0 6px 32px rgba(255,89,16,.6);}
+.pts-flash{animation:pts-pop .5s ease;}
+@keyframes pts-pop{0%{transform:scale(1)}35%{transform:scale(1.22)}100%{transform:scale(1)}}
+/* Fan Zone points sub-tab: dim it since Points now has its own page */
+/* Hype section & buttons — better contrast */
+.hype-total{color:rgba(255,255,255,.6);}
+#hype-total-num{color:#fff;}
+.hype-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);}
+.hype-emoji-label{color:rgba(255,255,255,.95);font-size:.82rem;}
+.hype-count{color:rgba(255,255,255,.7);font-size:.88rem;}
+.hype-section-title{color:rgba(255,255,255,.6);}
+/* Points card / earn-row in fz panel */
+.points-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:20px;}
+.points-card-title{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:14px;}
+.earn-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:rgba(255,255,255,.04);border-radius:8px;font-size:.82rem;color:rgba(255,255,255,.78);}
+.earn-pts{font-family:"Barlow Condensed",sans-serif;font-size:.92rem;font-weight:900;color:var(--orange);}
+/* Toast */
+#toast-container{position:fixed;bottom:70px;right:20px;z-index:400;display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
+.toast{background:rgba(10,18,40,.97);backdrop-filter:blur(10px);border:1px solid rgba(255,89,16,.3);border-radius:12px;padding:12px 18px;font-size:.82rem;color:rgba(255,255,255,.9);font-weight:600;opacity:0;transform:translateX(16px);transition:all .3s;max-width:280px;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.toast.show{opacity:1;transform:translateX(0);}
+/* Fav star on roster cards */
+.fav-star{position:absolute;top:8px;right:8px;background:none;border:none;font-size:1.15rem;color:rgba(0,45,114,.2);cursor:pointer;line-height:1;padding:2px;transition:all .2s;z-index:2;}
+.fav-star:hover,.fav-star.active{color:var(--orange);}
+.stat-crown{font-size:.72rem;vertical-align:middle;}
+/* Nav points button glow */
+#nav-points{color:var(--orange)!important;font-weight:800!important;}
+#nav-points.active{background:rgba(255,89,16,.15)!important;color:var(--orange)!important;}
+
 </style>
 </head>
 <body><nav>
@@ -622,6 +791,7 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
     <li><button onclick="showPage('history')" id="nav-history">History</button></li>
     <li><button onclick="showPage('fanzone')" id="nav-fanzone">Fan Zone</button></li>
     <li><button onclick="showPage('stats')" id="nav-stats">Stats</button></li>
+    <li><button onclick="showPage('points')" id="nav-points">🏆 Points</button></li>
     <li><button onclick="window.location='https://www.mlb.com/mets/tickets'" class="nav-ticket">Tickets</button></li>
   </ul>
 </nav>
@@ -629,7 +799,7 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-ring"></div>
-    <div class="hero-eyebrow">New York Mets &middot; 2026 Season &middot; Queens, NY</div>
+    <div class="hero-eyebrow">New York Mets &middot; 2026 Season &middot; Queens, NY</div><div id="firebase-setup-notice" style="display:none;position:fixed;bottom:70px;left:20px;background:rgba(10,18,40,.97);border:1px solid rgba(255,89,16,.4);border-radius:12px;padding:12px 18px;font-size:.75rem;color:rgba(255,255,255,.8);z-index:500;max-width:320px;line-height:1.5;"><strong style="color:var(--orange);">&#9888; Set up Firebase for real sharing</strong><br>Poll votes, hot takes &amp; leaderboard are currently <em>per-device only</em>.<br><a href="https://console.firebase.google.com" target="_blank" style="color:var(--orange);">Create a free Firebase RTDB</a> and paste the URL into <code style="background:rgba(255,255,255,.1);padding:2px 5px;border-radius:4px;">FIREBASE_URL</code> in the &lt;script&gt; tag.<button onclick="this.parentElement.style.display='none'" style="position:absolute;top:8px;right:10px;background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:.9rem;">&#x2715;</button></div>
     <h1 class="hero-title"><span class="outline">LET'S</span><br><span class="accent">GO</span><br>METS</h1>
     <p class="hero-subtitle">Citi Field &middot; Est. 1962 &middot; NL East</p>
     <div class="hero-cta">
@@ -643,6 +813,10 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
     <div class="stat-item"><div class="stat-num">$126<span class="dim">M</span></div><div class="stat-label">Bichette Deal</div></div>
     <div class="stat-item"><div class="stat-num">65<span class="dim">th</span></div><div class="stat-label">Season</div></div>
     <div class="stat-item"><div class="stat-num">#<span class="dim">1</span></div><div class="stat-label">Queens Forever</div></div>
+  </div>
+  <div class="hype-section">
+    <div class="hype-section-title">🔥 Game Day Hype Meter — React with other Mets fans</div>
+    <div id="hype-meter"><div class="stat-loading" style="color:rgba(255,255,255,.3)">Loading hype...</div></div>
   </div>
   <div class="ticker-wrap"><div class="ticker-track">
     <span class="ticker-item">&#128309; Juan Soto <span class="hi">RF</span></span><span class="ticker-sep">&middot;</span>
@@ -663,7 +837,7 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
     <span class="ticker-item">&#9889; Subway Series <span class="hi">May 12&ndash;14</span></span><span class="ticker-sep">&middot;</span>
   </div></div>
   <div class="countdown-strip">
-    <div class="countdown-label">Opening Day Countdown &mdash; March 26, 2026</div>
+    <div class="countdown-label" id="cd-label">Next Game Countdown</div>
     <div class="countdown-boxes">
       <div class="cd-box"><span class="cd-num" id="cd-days">--</span><div class="cd-unit">Days</div></div>
       <div class="cd-box"><span class="cd-num" id="cd-hours">--</span><div class="cd-unit">Hours</div></div>
@@ -970,6 +1144,110 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
   </div>
 </div>
 
+
+<!-- ════ POINTS ════ -->
+<div class="page" id="page-points">
+  <!-- Hero bar -->
+  <div style="background:linear-gradient(135deg,var(--blue-dark) 0%,var(--blue) 100%);padding:56px 24px 40px;position:relative;overflow:hidden;border-bottom:3px solid var(--orange);">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 90% 50%,rgba(255,89,16,.12),transparent);pointer-events:none;"></div>
+    <div style="max-width:1100px;margin:0 auto;position:relative;display:flex;align-items:flex-end;gap:40px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:220px;">
+        <div style="font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">Fan Competition &middot; 2026 Season</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:900;text-transform:uppercase;letter-spacing:-2px;line-height:.9;color:#fff;">
+          EARN <span style="color:var(--orange);">YOUR</span><br>STRIPES
+        </div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.5);margin-top:14px;max-width:360px;line-height:1.6;">Play trivia, vote in polls, lock predictions, post hot takes &mdash; everything earns you points. Top the leaderboard and prove you&rsquo;re the #1 Mets fan.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;padding-bottom:4px;">
+        <div style="background:rgba(255,89,16,.15);border:1px solid rgba(255,89,16,.35);border-radius:14px;padding:16px 28px;text-align:center;min-width:100px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:900;color:var(--orange);line-height:1;" class="my-points-display">0</div>
+          <div style="font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:700;margin-top:4px;">Your Points</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 28px;text-align:center;min-width:100px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:900;color:#60a5fa;line-height:1;" id="pts-day-streak">1</div>
+          <div style="font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:700;margin-top:4px;">Day Streak</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div style="background:var(--blue-dark);min-height:60vh;">
+    <div style="max-width:1100px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:24px;align-items:start;" class="pts-body-grid">
+
+      <!-- Col 1: Profile + Fav Player -->
+      <div>
+        <div class="pts-section-label">Your Profile</div>
+        <div id="profile-widget-page"></div>
+        <div class="pts-section-label" style="margin-top:28px;">⭐ Favorite Player</div>
+        <div id="fav-player-widget-page"></div>
+      </div>
+
+      <!-- Col 2: Leaderboard -->
+      <div>
+        <div class="pts-section-label">🏆 Top Fans Leaderboard</div>
+        <div class="pts-lb-card">
+          <div id="season-lb-list-page"><div class="pts-empty">Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- Col 3: How to earn -->
+      <div>
+        <div class="pts-section-label">How to Earn Points</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="pts-earn-item" onclick="showPage('fanzone')">
+            <span class="pts-earn-icon">🎯</span>
+            <span class="pts-earn-name">Trivia correct answer</span>
+            <span class="pts-earn-badge">+10</span>
+          </div>
+          <div class="pts-earn-item" onclick="showPage('fanzone')">
+            <span class="pts-earn-icon">⚡</span>
+            <span class="pts-earn-name">Lock a score prediction</span>
+            <span class="pts-earn-badge">+20</span>
+          </div>
+          <div class="pts-earn-item" onclick="showPage('fanzone')">
+            <span class="pts-earn-icon">🔒</span>
+            <span class="pts-earn-name">Season predictions</span>
+            <span class="pts-earn-badge">+15</span>
+          </div>
+          <div class="pts-earn-item" onclick="showPage('fanzone')">
+            <span class="pts-earn-icon">🔥</span>
+            <span class="pts-earn-name">Post a hot take</span>
+            <span class="pts-earn-badge">+5</span>
+          </div>
+          <div class="pts-earn-item" onclick="showPage('fanzone')">
+            <span class="pts-earn-icon">📊</span>
+            <span class="pts-earn-name">Vote in the poll</span>
+            <span class="pts-earn-badge">+5</span>
+          </div>
+          <div class="pts-earn-item" onclick="showPage('fanzone')">
+            <span class="pts-earn-icon">⚔️</span>
+            <span class="pts-earn-name">This or That answer</span>
+            <span class="pts-earn-badge">+3</span>
+          </div>
+          <div class="pts-earn-item" onclick="showPage('home')">
+            <span class="pts-earn-icon">🏟️</span>
+            <span class="pts-earn-name">Hype the game</span>
+            <span class="pts-earn-badge">+3</span>
+          </div>
+          <div class="pts-earn-item">
+            <span class="pts-earn-icon">📅</span>
+            <span class="pts-earn-name">Daily visit</span>
+            <span class="pts-earn-badge">+10</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><span class="accent">Let&rsquo;s Go </span><span class="outline">Mets</span></div>
+    <div class="footer-links"><a href="https://www.mlb.com/mets">Official Site</a><a href="https://www.mlb.com/mets/tickets">Tickets</a></div>
+    <div class="footer-sub">Earn points &middot; Top the leaderboard &middot; Rep Queens</div>
+  </footer>
+</div>
+
 <!-- ════ FAN ZONE ════ -->
 <div class="page" id="page-fanzone">
   <div class="fz-hero">
@@ -978,7 +1256,8 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
       <div class="fz-hero-title">FAN<br><span>ZONE</span></div>
       <div class="fz-hero-sub">Trivia &middot; Polls &middot; Predictions &middot; Hot Takes</div>
       <div class="fz-tabs">
-        <button class="fz-tab active" onclick="showFZPanel('trivia',this)">&#127941; Trivia</button>
+        <button class="fz-tab active" onclick="showFZPanel('trivia',this)">🎯 Trivia</button>
+        <button class="fz-tab" onclick="showFZPanel('points',this);loadSeasonLeaderboard()">🏆 Points</button>
         <button class="fz-tab" onclick="showFZPanel('poll',this)">&#128202; Poll &amp; Buzz</button>
         <button class="fz-tab" onclick="showFZPanel('predictions',this)">&#127919; Predictions</button>
         <button class="fz-tab" onclick="showFZPanel('hottakes',this)">&#128293; Hot Takes</button>
@@ -1156,6 +1435,39 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
     </div>
 
   </div><!-- end fz-body -->
+
+        <!-- POINTS PANEL -->
+        <div class="fz-panel" id="fzp-points">
+          <div class="fzp-points-grid">
+            <div>
+              <div class="section-tag" style="margin-bottom:14px">Your Profile</div>
+              <div id="profile-widget"></div>
+              <div class="section-tag" style="margin-bottom:14px;margin-top:24px">Your Favorite Player</div>
+              <div id="fav-player-widget"></div>
+            </div>
+            <div>
+              <div class="section-tag" style="margin-bottom:14px">🏆 Season Leaderboard</div>
+              <div class="points-card" style="margin-bottom:16px">
+                <div class="points-card-title">Top Fans 2026</div>
+                <div id="season-lb-list"><div class="slb-empty">Loading...</div></div>
+              </div>
+              <div class="points-card">
+                <div class="points-card-title">How to Earn Points</div>
+                <div class="how-to-earn">
+                  <div class="earn-row"><span>📊 Poll vote</span><span class="earn-pts">+5</span></div>
+                  <div class="earn-row"><span>🎯 Trivia correct</span><span class="earn-pts">+10</span></div>
+                  <div class="earn-row"><span>🔥 Post hot take</span><span class="earn-pts">+5</span></div>
+                  <div class="earn-row"><span>🔒 Lock predictions</span><span class="earn-pts">+15</span></div>
+                  <div class="earn-row"><span>⚡ Score prediction</span><span class="earn-pts">+20</span></div>
+                  <div class="earn-row"><span>⚔️ This or That</span><span class="earn-pts">+3</span></div>
+                  <div class="earn-row"><span>🏟️ Hype react</span><span class="earn-pts">+3</span></div>
+                  <div class="earn-row"><span>📅 Daily visit</span><span class="earn-pts">+10</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
   <footer><div class="footer-logo"><span class="accent">Let&rsquo;s Go </span><span class="outline">Mets</span></div><div class="footer-links"><a href="https://www.mlb.com/mets">Official Site</a><a href="https://www.mlb.com/mets/tickets">Tickets</a><a href="https://www.mlb.com/mets/stats">Stats</a><a href="https://twitter.com/mets">Twitter / X</a></div><div class="footer-sub">Blue &amp; Orange Forever &middot; Citi Field, Queens NY &middot; Est. 1962</div></footer>
 </div>
 
@@ -1189,9 +1501,15 @@ footer{background:var(--blue-dark);text-align:center;padding:60px 24px;border-to
     </div>
   </div>
 </div>
+<div id="toast-container"></div>
+<div id="my-points-badge" onclick="showPage('fanzone')" title="Your points — click to view leaderboard">0 pts</div>
 
 
 <script>
+
+
+
+
 
 
 
@@ -1300,11 +1618,43 @@ var LOCAL_SCORE_KEY = 'mets-score-preds-v2';
 var LOCAL_LB_KEY    = 'mets-leaderboard-v2';
 var LOCAL_TT_STREAK = 'mets-tt-streak-v2';
 
-var _hasSharedStorage = (typeof window !== 'undefined' && window.storage && typeof window.storage.get === 'function');
+// ═══════════════════════════════════════════════════════════════
+// SHARED STORAGE — 3-tier: claude.ai artifacts → Firebase RTDB → localStorage
+// To make polls/takes/hype/leaderboard work on a REAL website (visible to all):
+//   1. Go to https://console.firebase.google.com
+//   2. Create free project → Build → Realtime Database → Create (test mode)
+//   3. Paste your database URL below (e.g. https://myproject-rtdb.firebaseio.com)
+// ═══════════════════════════════════════════════════════════════
+var FIREBASE_URL = ''; // ← your Firebase RTDB URL here
 
-// Unified async get: tries window.storage first, falls back to localStorage
+var _hasClaudeStorage = (typeof window !== 'undefined' && window.storage && typeof window.storage.get === 'function');
+var _hasFirebase = (typeof FIREBASE_URL === 'string' && FIREBASE_URL.length > 10);
+
+// Throttled Firebase writes (max 1 per key per 2s to stay in free tier)
+var _fbThrottle = {};
+function _fbWrite(path, value) {
+  if (!_hasFirebase) return;
+  var now = Date.now();
+  if (_fbThrottle[path] && now - _fbThrottle[path] < 2000) return;
+  _fbThrottle[path] = now;
+  fetch(FIREBASE_URL + '/' + path + '.json', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(value)
+  }).catch(function() {});
+}
+
+function _fbRead(path, fallback, cb) {
+  if (!_hasFirebase) { cb(fallback); return; }
+  fetch(FIREBASE_URL + '/' + path + '.json')
+    .then(function(r) { return r.json(); })
+    .then(function(d) { cb((d !== null && d !== undefined) ? d : fallback); })
+    .catch(function() { cb(fallback); });
+}
+
+// Unified async get: claude.ai → Firebase → localStorage
 function _sharedGet(key, fallback, cb) {
-  if (_hasSharedStorage) {
+  if (_hasClaudeStorage) {
     window.storage.get(key, true)
       .then(function(r) {
         if (r && r.value !== undefined && r.value !== null) {
@@ -1313,19 +1663,21 @@ function _sharedGet(key, fallback, cb) {
         cb(fallback);
       })
       .catch(function() { cb(fallback); });
+  } else if (_hasFirebase) {
+    _fbRead('mets/' + key, fallback, cb);
   } else {
     cb(_ss.get(key, fallback));
   }
 }
 
-// Unified async set
+// Unified async set: writes to all available backends
 function _sharedSet(key, value) {
-  var str = JSON.stringify(value);
-  if (_hasSharedStorage) {
-    window.storage.set(key, str, true).catch(function() {});
+  _ss.set(key, value); // always cache locally for instant UI
+  if (_hasClaudeStorage) {
+    window.storage.set(key, JSON.stringify(value), true).catch(function() {});
+  } else if (_hasFirebase) {
+    _fbWrite('mets/' + key, value);
   }
-  // Always write to localStorage as local cache
-  _ss.set(key, value);
 }
 
 // Unified get for per-user flags (voted, etc) - localStorage only, never shared
@@ -1387,13 +1739,29 @@ function showFZPanel(id, btn) {
 
 // ── COUNTDOWN ──
 function updateCountdown() {
-  var d = new Date('2026-03-26T13:10:00-04:00'), n = new Date(), diff = d - n;
-  if (diff <= 0) {
+  var schedule = [{"date": "2026-03-26", "opp": "Pittsburgh Pirates Opening Day", "time": "19:10"}, {"date": "2026-03-28", "opp": "Pittsburgh Pirates", "time": "19:10"}, {"date": "2026-03-29", "opp": "Pittsburgh Pirates", "time": "19:10"}, {"date": "2026-03-30", "opp": "St. Louis Cardinals", "time": "19:10"}, {"date": "2026-03-31", "opp": "St. Louis Cardinals", "time": "19:10"}, {"date": "2026-04-01", "opp": "St. Louis Cardinals", "time": "19:10"}, {"date": "2026-04-02", "opp": "San Francisco Giants (4 games)", "time": "19:10"}, {"date": "2026-04-07", "opp": "Arizona Diamondbacks", "time": "19:10"}, {"date": "2026-04-10", "opp": "Athletics", "time": "19:10"}, {"date": "2026-04-13", "opp": "Los Angeles Dodgers", "time": "19:10"}, {"date": "2026-04-17", "opp": "Chicago Cubs at Wrigley", "time": "19:10"}, {"date": "2026-04-21", "opp": "Minnesota Twins", "time": "19:10"}, {"date": "2026-04-24", "opp": "Colorado Rockies", "time": "19:10"}, {"date": "2026-04-28", "opp": "Washington Nationals", "time": "19:10"}, {"date": "2026-05-01", "opp": "Los Angeles Angels", "time": "19:10"}, {"date": "2026-05-05", "opp": "Colorado Rockies", "time": "19:10"}, {"date": "2026-05-09", "opp": "Arizona Diamondbacks", "time": "19:10"}, {"date": "2026-05-12", "opp": "New York Yankees", "time": "19:10"}, {"date": "2026-05-15", "opp": "Miami Marlins", "time": "19:10"}, {"date": "2026-05-19", "opp": "Washington Nationals", "time": "19:10"}, {"date": "2026-05-25", "opp": "Toronto Blue Jays", "time": "19:10"}, {"date": "2026-05-29", "opp": "Philadelphia Phillies", "time": "19:10"}, {"date": "2026-06-02", "opp": "Seattle Mariners", "time": "19:10"}, {"date": "2026-06-06", "opp": "San Diego Padres", "time": "19:10"}, {"date": "2026-06-09", "opp": "Home Stand - Citi Field", "time": "19:10"}, {"date": "2026-06-16", "opp": "Cincinnati Reds", "time": "19:10"}, {"date": "2026-06-20", "opp": "Philadelphia Phillies", "time": "19:10"}, {"date": "2026-06-22", "opp": "Home Stand - Citi Field", "time": "19:10"}, {"date": "2026-06-30", "opp": "Toronto Blue Jays", "time": "19:10"}, {"date": "2026-07-03", "opp": "Philadelphia Phillies", "time": "19:10"}, {"date": "2026-07-06", "opp": "Atlanta Braves", "time": "19:10"}, {"date": "2026-07-09", "opp": "Washington Nationals", "time": "19:10"}, {"date": "2026-07-13", "opp": "Miami Marlins", "time": "19:10"}, {"date": "2026-07-17", "opp": "Chicago Cubs", "time": "19:10"}, {"date": "2026-07-21", "opp": "San Francisco Giants", "time": "19:10"}, {"date": "2026-07-24", "opp": "Los Angeles Dodgers", "time": "19:10"}, {"date": "2026-07-28", "opp": "Pittsburgh Pirates", "time": "19:10"}, {"date": "2026-08-01", "opp": "Atlanta Braves", "time": "19:10"}, {"date": "2026-08-05", "opp": "Philadelphia Phillies", "time": "19:10"}, {"date": "2026-08-09", "opp": "New York Yankees", "time": "13:10"}, {"date": "2026-08-14", "opp": "Washington Nationals", "time": "19:10"}, {"date": "2026-08-18", "opp": "Miami Marlins", "time": "19:10"}, {"date": "2026-08-22", "opp": "Cincinnati Reds", "time": "19:10"}, {"date": "2026-08-26", "opp": "Milwaukee Brewers", "time": "19:10"}, {"date": "2026-08-30", "opp": "Chicago Cubs", "time": "13:10"}, {"date": "2026-09-04", "opp": "Atlanta Braves", "time": "19:10"}, {"date": "2026-09-08", "opp": "Philadelphia Phillies", "time": "19:10"}, {"date": "2026-09-11", "opp": "Washington Nationals", "time": "19:10"}, {"date": "2026-09-15", "opp": "Miami Marlins", "time": "19:10"}, {"date": "2026-09-19", "opp": "Pittsburgh Pirates", "time": "19:10"}, {"date": "2026-09-22", "opp": "Atlanta Braves", "time": "19:10"}, {"date": "2026-09-26", "opp": "Philadelphia Phillies", "time": "19:10"}, {"date": "2026-09-30", "opp": "Washington Nationals", "time": "15:10"}]
+  var now = new Date();
+  // Find next upcoming game
+  var next = null;
+  for (var i = 0; i < schedule.length; i++) {
+    var g = schedule[i];
+    var gd = new Date(g.date + 'T' + g.time + ':00-04:00');
+    if (gd > now) { next = { game: g, date: gd }; break; }
+  }
+  var labelEl = document.getElementById('cd-label');
+  if (!next) {
+    // Season over
     ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent='00'; });
+    if (labelEl) labelEl.textContent = 'Season Complete — See You Next Year!';
     return;
   }
+  var diff = next.date - now;
+  var opp = next.game.opp.replace(' Opening Day','').replace(' (4 games)','').trim();
+  var isToday = diff < 86400000;
+  var label = isToday ? ('Game Day! vs ' + opp) : ('Next: vs ' + opp + ' — ' + next.game.date.replace('2026-','').replace(/-/g,'/'));
+  if (labelEl) labelEl.textContent = label;
   var el;
-  el=document.getElementById('cd-days');   if(el) el.textContent=Math.floor(diff/86400000);
+  el=document.getElementById('cd-days');   if(el) el.textContent=isToday?'00':Math.floor(diff/86400000);
   el=document.getElementById('cd-hours');  if(el) el.textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
   el=document.getElementById('cd-mins');   if(el) el.textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');
   el=document.getElementById('cd-secs');   if(el) el.textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');
@@ -2617,9 +2985,499 @@ showPage = function(id) {
 // Also load score widget on home page visit
 _origShowPage('home');
 
+// Points page: load leaderboard on visit
+var _pointsPageLoaded = false;
+var _origShowPageAll = showPage;
+showPage = function(id) {
+  _origShowPageAll(id);
+  if (id === 'points' && !_pointsPageLoaded) {
+    _pointsPageLoaded = true;
+    // populate secondary widgets
+    var pw2 = document.getElementById('profile-widget-page');
+    var fw2 = document.getElementById('fav-player-widget-page');
+    if (pw2) pw2.innerHTML = document.getElementById('profile-widget') ? document.getElementById('profile-widget').innerHTML : '';
+    if (fw2) fw2.innerHTML = document.getElementById('fav-player-widget') ? document.getElementById('fav-player-widget').innerHTML : '';
+    // load leaderboard into page
+    _sharedGet(SEASON_LB_KEY, [], function(lb) {
+      var el = document.getElementById('season-lb-list-page');
+      if (!el) return;
+      renderSeasonLeaderboard(lb || []);
+      // Mirror to page list
+      var src = document.getElementById('season-lb-list');
+      if (src && el) el.innerHTML = src.innerHTML;
+    });
+    // Day streak display
+    var streak = parseInt(_ss.str('mets-visit-streak')||'1');
+    var sd = document.getElementById('pts-day-streak');
+    if (sd) sd.textContent = streak;
+  }
+  if (id === 'points') {
+    // always refresh lb and points display on re-visit
+    updatePointsDisplay();
+    var src = document.getElementById('season-lb-list');
+    var dst = document.getElementById('season-lb-list-page');
+    if (src && dst) dst.innerHTML = src.innerHTML;
+    var pw2 = document.getElementById('profile-widget-page');
+    var fw2 = document.getElementById('fav-player-widget-page');
+    if (pw2 && document.getElementById('profile-widget')) pw2.innerHTML = document.getElementById('profile-widget').innerHTML;
+    if (fw2 && document.getElementById('fav-player-widget')) fw2.innerHTML = document.getElementById('fav-player-widget').innerHTML;
+  }
+};
 
 
 
+
+
+
+
+// ══ NEW FEATURES: HYPE / POINTS / PERSONALIZATION / STATS CONTEXT ══
+
+// ══════════════════════════════════════════════════════
+// FEATURE 1: LIVE GAME HYPE METER
+// ══════════════════════════════════════════════════════
+var HYPE_KEY       = 'mets-hype-2026-v1';
+var HYPE_REACT_KEY = 'mets-hype-reacted-v1'; // per-session reactions
+
+var hypeEmojis = [
+  { id: 'fire',    label: '🔥 LFG!',         color: '#ff6b35' },
+  { id: 'homer',   label: '💣 GONE!',         color: '#facc15' },
+  { id: 'strike',  label: '⚡ K!',            color: '#60a5fa' },
+  { id: 'lets_go', label: '🏟️ LETS GO METS', color: '#4ade80' },
+  { id: 'soto',    label: '🦁 SOTO SHUFFLE', color: '#f472b6' }
+];
+
+var hypeState = _ss.get(HYPE_KEY, { fire:0, homer:0, strike:0, lets_go:0, soto:0 }) || {};
+hypeEmojis.forEach(function(e) { if (!hypeState[e.id]) hypeState[e.id] = 0; });
+
+function renderHypeMeter() {
+  var container = document.getElementById('hype-meter');
+  if (!container) return;
+  var total = hypeEmojis.reduce(function(s,e){ return s + (hypeState[e.id]||0); }, 0);
+  var reacted = _ss.get(HYPE_REACT_KEY, {}) || {};
+  var html = '<div class="hype-total"><span id="hype-total-num">' + (total||0) + '</span> total hypes this game</div>';
+  html += '<div class="hype-btns">';
+  hypeEmojis.forEach(function(e) {
+    var count = hypeState[e.id] || 0;
+    var hasReacted = reacted[e.id];
+    var pct = total > 0 ? Math.round((count/total)*100) : 0;
+    html += '<button class="hype-btn' + (hasReacted ? ' reacted' : '') + '" onclick="addHype(\'' + e.id + '\')" style="--hype-color:' + e.color + '">' +
+      '<span class="hype-emoji-label">' + e.label + '</span>' +
+      '<div class="hype-bar-wrap"><div class="hype-bar" style="width:' + pct + '%;background:' + e.color + '"></div></div>' +
+      '<span class="hype-count">' + count + '</span>' +
+    '</button>';
+  });
+  html += '</div>';
+  // Hype pulse animation when high activity
+  if (total > 50) container.classList.add('hype-hot');
+  else container.classList.remove('hype-hot');
+  container.innerHTML = html;
+}
+
+function addHype(id) {
+  var reacted = _ss.get(HYPE_REACT_KEY, {}) || {};
+  if (reacted[id]) return; // already reacted this session
+  hypeState[id] = (hypeState[id] || 0) + 1;
+  reacted[id] = true;
+  _ss.set(HYPE_REACT_KEY, reacted);
+  _sharedSet(HYPE_KEY, hypeState);
+  renderHypeMeter();
+  // Burst animation
+  var btn = event && event.target ? event.target.closest('.hype-btn') : null;
+  if (btn) {
+    btn.classList.add('hype-burst');
+    setTimeout(function(){ btn.classList.remove('hype-burst'); }, 600);
+  }
+}
+
+function _loadHype() {
+  _sharedGet(HYPE_KEY, {}, function(data) {
+    if (data && typeof data === 'object') {
+      hypeEmojis.forEach(function(e) { if (data[e.id] !== undefined) hypeState[e.id] = data[e.id]; });
+      _ss.set(HYPE_KEY, hypeState);
+      renderHypeMeter();
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// FEATURE 2: SEASON-LONG POINTS LEADERBOARD
+// ══════════════════════════════════════════════════════
+var SEASON_LB_KEY  = 'mets-season-lb-2026-v1';   // shared
+var MY_POINTS_KEY  = 'mets-my-points-2026-v1';    // local
+var MY_NAME_KEY    = 'mets-my-name-2026-v1';      // local
+
+var pointsSystem = {
+  poll_vote:         5,
+  trivia_correct:    10,
+  trivia_perfect:    100,
+  hot_take_post:     5,
+  hot_take_upvote:   2,
+  prediction_lock:   15,
+  score_prediction:  20,
+  this_or_that:      3,
+  daily_visit:       10,
+  hype_react:        3
+};
+
+function getMyPoints() { return _ss.get(MY_POINTS_KEY, 0) || 0; }
+function getMyName()   { return _ss.str(MY_NAME_KEY) || ''; }
+
+function awardPoints(action, amount) {
+  var amt = amount !== undefined ? amount : (pointsSystem[action] || 0);
+  if (!amt) return;
+  var pts = getMyPoints() + amt;
+  _ss.set(MY_POINTS_KEY, pts);
+  // Flash the points widget
+  var badge = document.getElementById('my-points-badge');
+  if (badge) {
+    badge.textContent = pts + ' pts';
+    badge.classList.add('pts-flash');
+    setTimeout(function(){ badge.classList.remove('pts-flash'); }, 800);
+  }
+  // Update leaderboard if user has a name
+  var name = getMyName();
+  if (name) updateLeaderboard(name, pts);
+  updatePointsDisplay();
+}
+
+function updateLeaderboard(name, pts) {
+  _sharedGet(SEASON_LB_KEY, [], function(lb) {
+    if (!Array.isArray(lb)) lb = [];
+    var existing = lb.findIndex(function(e){ return e.name === name; });
+    if (existing >= 0) lb[existing].pts = Math.max(lb[existing].pts, pts);
+    else lb.push({ name: name, pts: pts });
+    lb.sort(function(a,b){ return b.pts - a.pts; });
+    lb = lb.slice(0, 50); // top 50
+    _sharedSet(SEASON_LB_KEY, lb);
+    renderSeasonLeaderboard(lb);
+  });
+}
+
+function renderSeasonLeaderboard(lb) {
+  var myName = getMyName();
+  var medals = ['🥇','🥈','🥉'];
+  var rows = (!lb || !lb.length)
+    ? '<div class="slb-empty">No entries yet — be the first!</div>'
+    : lb.slice(0,10).map(function(e, i) {
+        var isMe = myName && e.name === myName;
+        return '<div class="slb-row' + (isMe ? ' slb-me' : '') + '">' +
+          '<span class="slb-rank">' + (medals[i] || ('#'+(i+1))) + '</span>' +
+          '<span class="slb-name">' + _escHtml(e.name) + (isMe ? ' <span class="slb-you">YOU</span>' : '') + '</span>' +
+          '<span class="slb-pts">' + e.pts + ' pts</span>' +
+          '</div>';
+      }).join('');
+  ['season-lb-list','season-lb-list-page'].forEach(function(id){
+    var el = document.getElementById(id); if (el) el.innerHTML = rows;
+  });
+}
+
+function loadSeasonLeaderboard() {
+  ['season-lb-list','season-lb-list-page'].forEach(function(id){
+    var el = document.getElementById(id); if (el) el.innerHTML = '<div class="slb-empty">Loading…</div>';
+  });
+  _sharedGet(SEASON_LB_KEY, [], function(lb) { renderSeasonLeaderboard(lb || []); });
+}
+
+function updatePointsDisplay() {
+  var pts = getMyPoints();
+  var els = document.querySelectorAll('.my-points-display');
+  els.forEach(function(el){ el.textContent = pts; });
+  var badge = document.getElementById('my-points-badge');
+  if (badge) badge.textContent = pts + ' pts';
+}
+
+function savePlayerName() {
+  var inp = document.getElementById('player-name-inp');
+  if (!inp || !inp.value.trim()) return;
+  var name = inp.value.trim().substring(0,20);
+  _ss.setStr(MY_NAME_KEY, name);
+  updateLeaderboard(name, getMyPoints());
+  renderProfileWidget();
+  awardPoints('daily_visit');
+}
+
+function renderProfileWidget() {
+  var wrap = document.getElementById('profile-widget');
+  if (!wrap) return;
+  var name = getMyName();
+  var pts = getMyPoints();
+  if (!name) {
+    wrap.innerHTML = '<div class="profile-setup">' +
+      '<div class="profile-title">Join the Leaderboard</div>' +
+      '<div class="profile-sub">Enter your fan name to track points and compete</div>' +
+      '<div class="profile-inp-row">' +
+        '<input class="profile-inp" id="player-name-inp" placeholder="Your fan name (max 20 chars)" maxlength="20">' +
+        '<button class="btn btn-primary btn-sm" onclick="savePlayerName()">Join ⚡</button>' +
+      '</div></div>';
+  } else {
+    var rank = '—';
+    wrap.innerHTML = '<div class="profile-card">' +
+      '<div class="profile-avatar">' + name.substring(0,2).toUpperCase() + '</div>' +
+      '<div class="profile-info">' +
+        '<div class="profile-name">' + _escHtml(name) + '</div>' +
+        '<div class="profile-pts"><span class="my-points-display">' + pts + '</span> pts</div>' +
+      '</div>' +
+      '<div class="profile-actions">' +
+        '<button class="profile-reset" onclick="resetProfile()">Change Name</button>' +
+      '</div>' +
+    '</div>';
+  }
+}
+
+function resetProfile() {
+  _ss.setStr(MY_NAME_KEY, '');
+  renderProfileWidget();
+}
+
+// Award points for existing actions by hooking into them
+var _origCastVote = castVote;
+castVote = function(player) {
+  var alreadyVoted = _localGetStr(POLL_VOTED_KEY);
+  _origCastVote(player);
+  if (!alreadyVoted) awardPoints('poll_vote');
+};
+
+var _origAnswerTrivia = answerTrivia;
+answerTrivia = function(chosen) {
+  var q = triviaQuestions[triviaState ? triviaState.idx : 0];
+  var wasCorrect = q && chosen === q.correct;
+  _origAnswerTrivia(chosen);
+  if (wasCorrect) awardPoints('trivia_correct');
+};
+
+var _htPostsThisSession = 0;
+var _origSubmitHotTake = submitHotTake;
+submitHotTake = function() {
+  var before = (document.getElementById('ht-inp')||{}).value || '';
+  _origSubmitHotTake();
+  var after = (document.getElementById('ht-inp')||{}).value || '';
+  if (after.trim() === '' && before.trim() !== '' && _htPostsThisSession < 3) {
+    _htPostsThisSession++; awardPoints('hot_take_post');
+  }
+};
+
+var _origSavePredictions = savePredictions;
+savePredictions = function() {
+  var alreadySaved = _ss.get(LOCAL_PRED_KEY, null);
+  _origSavePredictions();
+  if (!alreadySaved) awardPoints('prediction_lock');
+};
+
+var _ttPtsThisSession = 0;
+var _origAnswerTT = answerTT;
+answerTT = function(choice) {
+  _origAnswerTT(choice);
+  if (_ttPtsThisSession < 5) { _ttPtsThisSession++; awardPoints('this_or_that'); }
+};
+
+var _origAddHype = addHype;
+addHype = function(id) {
+  var reacted = _ss.get(HYPE_REACT_KEY, {}) || {};
+  var alreadyReacted = reacted[id];
+  _origAddHype(id);
+  if (!alreadyReacted) awardPoints('hype_react');
+};
+
+// Daily visit bonus (once per day)
+function checkDailyVisit() {
+  var lastVisit = _ss.str('mets-last-visit') || '';
+  var today = new Date().toISOString().substring(0,10);
+  if (lastVisit !== today) {
+    // Update streak
+    var yesterday = new Date(Date.now()-86400000).toISOString().substring(0,10);
+    var streak = parseInt(_ss.str('mets-visit-streak')||'0');
+    streak = (lastVisit === yesterday) ? streak + 1 : 1;
+    _ss.setStr('mets-visit-streak', String(streak));
+    _ss.setStr('mets-last-visit', today);
+    if (getMyName()) awardPoints('daily_visit');
+    var sd = document.getElementById('pts-day-streak');
+    if (sd) sd.textContent = streak;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// FEATURE 3: PLAYER PERSONALIZATION
+// ══════════════════════════════════════════════════════
+var FAV_PLAYER_KEY = 'mets-fav-player-v1';
+
+function getFavPlayer() { return _ss.str(FAV_PLAYER_KEY) || ''; }
+
+function setFavPlayer(pid) {
+  var prev = getFavPlayer();
+  _ss.setStr(FAV_PLAYER_KEY, pid);
+  renderFavPlayerWidget();
+  // Update all fav stars
+  document.querySelectorAll('.fav-star').forEach(function(s) {
+    s.classList.toggle('active', s.dataset.pid === pid);
+    s.title = s.dataset.pid === pid ? 'Your favorite player!' : 'Set as favorite';
+  });
+  if (pid && pid !== prev) {
+    // Flash welcome message
+    var name = playersData[pid] ? playersData[pid].name : pid;
+    showToast('⭐ ' + name + ' is now your favorite player!');
+  }
+}
+
+function renderFavPlayerWidget() {
+  var wrap = document.getElementById('fav-player-widget');
+  if (!wrap) return;
+  var pid = getFavPlayer();
+  var p = pid ? playersData[pid] : null;
+  if (!p) {
+    wrap.innerHTML = '<div class="fpw-empty"><span>⭐</span><span>Pick your favorite Mets player to personalize your experience</span></div>';
+    return;
+  }
+  var photo = p.photo ? '<img src="' + p.photo + '" class="fpw-photo">' : '<div class="fpw-photo-ph">#' + p.num + '</div>';
+  var badges = (p.badges||[]).slice(0,2).map(function(b){ return '<span class="modal-tag">' + b + '</span>'; }).join('');
+  var stats = (p.stats||[]).slice(0,3).map(function(s){
+    return '<div class="fpw-stat"><div class="fpw-stat-val">' + s.v + '</div><div class="fpw-stat-lbl">' + s.l + '</div></div>';
+  }).join('');
+  wrap.innerHTML = '<div class="fpw-card">' +
+    '<div class="fpw-header">' + photo + '<div class="fpw-info"><div class="fpw-name">' + p.name + '</div><div class="fpw-pos">' + (p.sub||p.pos||'') + '</div>' + badges + '</div></div>' +
+    '<div class="fpw-stats">' + stats + '</div>' +
+    '<button class="fpw-change" onclick="clearFavPlayer()">Change Player ↗</button>' +
+  '</div>';
+}
+
+function clearFavPlayer() {
+  _ss.setStr(FAV_PLAYER_KEY, '');
+  renderFavPlayerWidget();
+  var f2 = document.getElementById('fav-player-widget-page'); if (f2 && document.getElementById('fav-player-widget')) f2.innerHTML = document.getElementById('fav-player-widget').innerHTML;
+  document.querySelectorAll('.fav-star').forEach(function(s){ s.classList.remove('active'); });
+}
+
+// Inject fav star buttons into all player cards
+function injectFavStars() {
+  var pid = getFavPlayer();
+  document.querySelectorAll('[onclick*="openPlayer"]').forEach(function(card) {
+    var match = card.getAttribute('onclick').match(/openPlayer\('(\w+)'\)/);
+    if (!match) return;
+    var cardPid = match[1];
+    if (card.querySelector('.fav-star')) return; // already has one
+    var star = document.createElement('button');
+    star.className = 'fav-star' + (cardPid === pid ? ' active' : '');
+    star.dataset.pid = cardPid;
+    star.title = cardPid === pid ? 'Your favorite player!' : 'Set as favorite';
+    star.innerHTML = '★';
+    star.onclick = function(e) { e.stopPropagation(); setFavPlayer(cardPid); };
+    card.appendChild(star);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// FEATURE 4: STATS WITH CONTEXT
+// ══════════════════════════════════════════════════════
+
+// Inject context into stat table after it renders
+function addStatContext(container, type) {
+  var rows = container.querySelectorAll('tbody tr');
+  if (!rows.length) return;
+
+  if (type === 'hitting') {
+    // Find best AVG
+    var best = { avg: 0, row: null };
+    rows.forEach(function(row) {
+      var avgCell = row.querySelectorAll('td')[2];
+      if (!avgCell) return;
+      var v = parseFloat(avgCell.textContent) || 0;
+      if (v > best.avg) { best.avg = v; best.row = row; }
+    });
+    if (best.row) {
+      var cell = best.row.querySelectorAll('td')[2];
+      if (cell) cell.innerHTML += ' <span class="stat-crown" title="Team leader">👑</span>';
+    }
+    // Add context tooltips
+    rows.forEach(function(row) {
+      var cells = row.querySelectorAll('td.num');
+      var avg = parseFloat((cells[1]||{}).textContent) || 0;
+      var hr  = parseInt((cells[2]||{}).textContent) || 0;
+      var ops = parseFloat((cells[3]||{}).textContent) || 0;
+      var tip = '';
+      if (avg >= 0.300) tip = '🔥 Hitting .300+';
+      else if (avg >= 0.280) tip = '✅ Above league avg';
+      else if (avg > 0 && avg < 0.220) tip = '⚠️ Struggling';
+      if (ops >= 0.900) tip += (tip?' · ':'') + '💣 Elite OPS';
+      if (tip && cells[1]) cells[1].title = tip;
+    });
+  }
+
+  if (type === 'pitching') {
+    var bestEra = { val: 99, row: null };
+    rows.forEach(function(row) {
+      var eraCell = row.querySelectorAll('td')[2];
+      if (!eraCell) return;
+      var v = parseFloat(eraCell.textContent) || 99;
+      if (v < bestEra.val) { bestEra.val = v; bestEra.row = row; }
+    });
+    if (bestEra.row) {
+      var eCell = bestEra.row.querySelectorAll('td')[2];
+      if (eCell) eCell.innerHTML += ' <span class="stat-crown" title="Lowest ERA">👑</span>';
+    }
+  }
+}
+
+// Hook into table renders
+var _origRenderHitting = renderHittingTable;
+renderHittingTable = function(results, container) {
+  _origRenderHitting(results, container);
+  setTimeout(function(){ addStatContext(container, 'hitting'); }, 50);
+};
+
+var _origRenderPitching = renderPitchingTable;
+renderPitchingTable = function(results, container) {
+  _origRenderPitching(results, container);
+  var c = document.getElementById('pitching-table-body');
+  if (c) setTimeout(function(){ addStatContext(c, 'pitching'); }, 50);
+};
+
+// ══════════════════════════════════════════════════════
+// TOAST NOTIFICATIONS
+// ══════════════════════════════════════════════════════
+function showToast(msg) {
+  var t = document.getElementById('toast-container');
+  if (!t) return;
+  var el = document.createElement('div');
+  el.className = 'toast show';
+  el.textContent = msg;
+  t.appendChild(el);
+  setTimeout(function(){ el.classList.remove('show'); setTimeout(function(){ el.remove(); }, 400); }, 2800);
+}
+
+// ══════════════════════════════════════════════════════
+// BOOT NEW FEATURES
+// ══════════════════════════════════════════════════════
+checkDailyVisit();
+renderProfileWidget();
+renderFavPlayerWidget();
+updatePointsDisplay();
+renderHypeMeter();
+_loadHype();
+setInterval(_loadHype, 45000);
+loadSeasonLeaderboard();
+setTimeout(injectFavStars, 200);
+
+// Re-inject fav stars when roster page is shown
+var _origShowPageFull = showPage;
+showPage = function(id) {
+  _origShowPageFull(id);
+  if (id === 'roster') setTimeout(injectFavStars, 100);
+};
+
+
+
+
+// Show Firebase setup notice if no backend configured (and not on claude.ai)
+(function() {
+  var notice = document.getElementById('firebase-setup-notice');
+  if (!notice) return;
+  var dismissed = localStorage.getItem('mets-firebase-notice-dismissed');
+  if (!_hasClaudeStorage && !_hasFirebase && !dismissed) {
+    notice.style.display = 'block';
+    notice.querySelector('button').addEventListener('click', function() {
+      localStorage.setItem('mets-firebase-notice-dismissed', '1');
+    });
+  }
+})();
 
 </script>
 </body>
